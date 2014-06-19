@@ -23,7 +23,7 @@ describe UserInitializer do
 
   describe 'setup' do
     context 'when allowed to setup' do
-      before { subject.stub(:can_setup?).and_return(true) }
+      before { allow(subject).to receive(:can_setup?).and_return(true) }
 
       shared_examples 'trying to update user\'s image' do
         context 'when the user has no image' do
@@ -60,7 +60,7 @@ describe UserInitializer do
 
           it 'updates user\'s attributes with omniauth urls data' do
             omniauth_urls_data = { facebook_url: 'http://fb.com/juquinhadasilva' }
-            subject.stub(:omniauth_urls_data).and_return(omniauth_urls_data)
+            allow(subject).to receive(:omniauth_urls_data).and_return(omniauth_urls_data)
             expect(user).to receive(:update_attributes).with(omniauth_urls_data)
             subject.setup
           end
@@ -118,7 +118,7 @@ describe UserInitializer do
 
     context 'when not allowed to setup' do
       let(:user) { FactoryGirl.create(:user) }
-      before { subject.stub(:can_setup?).and_return(false) }
+      before { allow(subject).to receive(:can_setup?).and_return(false) }
 
       it 'creates no user' do
         expect {

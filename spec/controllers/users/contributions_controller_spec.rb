@@ -12,7 +12,7 @@ describe Users::ContributionsController do
   let(:current_user){ nil }
   let(:format){ 'json' }
   before do
-    controller.stub(:current_user).and_return(current_user)
+    allow(controller).to receive(:current_user).and_return(current_user)
     successful_contribution
     failed_contribution
     unconfirmed_contribution
@@ -26,12 +26,15 @@ describe Users::ContributionsController do
       get :index, user_id: successful_contribution.user.id, locale: 'pt'
     end
 
-    its(:status){ should == 200 }
+    describe '#status' do
+      subject { super().status }
+      it { should == 200 }
+    end
   end
 
   describe "POST request_refund" do
     before do
-      ContributionObserver.any_instance.stub(:notify_backoffice)
+      allow_any_instance_of(ContributionObserver).to receive(:notify_backoffice)
     end
 
     context "without user" do
@@ -40,7 +43,7 @@ describe Users::ContributionsController do
 
       it "should not set requested_refund" do
         failed_contribution.reload
-        failed_contribution.requested_refund?.should be_false
+        expect(failed_contribution.requested_refund?).to be_false
       end
       it{ should redirect_to new_user_session_path }
     end
@@ -51,7 +54,7 @@ describe Users::ContributionsController do
 
       it do
         failed_contribution.reload
-        failed_contribution.requested_refund?.should be_true
+        expect(failed_contribution.requested_refund?).to be_true
       end
 
       it { should redirect_to credits_user_path(current_user) }
@@ -63,7 +66,7 @@ describe Users::ContributionsController do
 
       it do
         unconfirmed_contribution.reload
-        unconfirmed_contribution.requested_refund?.should be_false
+        expect(unconfirmed_contribution.requested_refund?).to be_false
       end
 
       it { should redirect_to credits_user_path(current_user) }
@@ -76,7 +79,7 @@ describe Users::ContributionsController do
 
       it do
         other_back.reload
-        other_back.requested_refund?.should be_false
+        expect(other_back.requested_refund?).to be_false
       end
 
       it { should redirect_to root_path }

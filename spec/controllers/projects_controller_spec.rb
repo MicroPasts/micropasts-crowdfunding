@@ -1,9 +1,9 @@
 require 'spec_helper'
 
 describe ProjectsController do
-  before{ Notification.unstub(:notify) }
-  before{ Notification.unstub(:notify_once) }
-  before{ controller.stub(:current_user).and_return(current_user) }
+  before{ allow(Notification).to receive(:notify).and_call_original }
+  before{ allow(Notification).to receive(:notify_once).and_call_original }
+  before{ allow(controller).to receive(:current_user).and_return(current_user) }
   render_views
   subject{ response }
   let(:project){ create(:project, state: 'draft') }
@@ -49,18 +49,18 @@ describe ProjectsController do
 
   describe 'GET index' do
     before do
-      controller.stub(:last_tweets).and_return([])
+      allow(controller).to receive(:last_tweets).and_return([])
       get :index
     end
     it { expect(response).to be_success }
 
     describe 'staging env' do
       before do
-        request.stub(:protocol).and_return("http://")
-        request.stub(:host).and_return("staging.neighbor.ly")
-        request.stub(:port).and_return(80)
-        request.stub(:port_string).and_return(":80")
-        request.stub(:path).and_return("/")
+        allow(request).to receive(:protocol).and_return("http://")
+        allow(request).to receive(:host).and_return("staging.neighbor.ly")
+        allow(request).to receive(:port).and_return(80)
+        allow(request).to receive(:port_string).and_return(":80")
+        allow(request).to receive(:path).and_return("/")
       end
 
       it 'should require basic auth' do
@@ -204,7 +204,7 @@ describe ProjectsController do
         let(:project) { create(:project, state: 'online') }
 
         before do
-          controller.stub(:current_user).and_return(project.user)
+          allow(controller).to receive(:current_user).and_return(project.user)
         end
 
         context "when I try to update the project name field" do
@@ -273,7 +273,7 @@ describe ProjectsController do
     context 'url is a valid video' do
       let(:video_url){ 'http://vimeo.com/17298435' }
       before do
-        VideoInfo.stub(:get).and_return({video_id: 'abcd'})
+        allow(VideoInfo).to receive(:get).and_return({video_id: 'abcd'})
         get :video, url: video_url
       end
 

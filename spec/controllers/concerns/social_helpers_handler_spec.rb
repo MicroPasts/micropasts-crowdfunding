@@ -4,10 +4,10 @@ describe Concerns::SocialHelpersHandler do
   render_views
   before do
     [:render_facebook_sdk, :render_facebook_like, :render_twitter, :display_uservoice_sso].each do |method|
-      ApplicationController.any_instance.unstub(method)
+      allow_any_instance_of(ApplicationController).to receive(method).and_call_original
     end
     @controller = ApplicationController.new
-    @controller.request.stub(:variant)
+    allow(@controller.request).to receive(:variant)
   end
 
   describe '#set_facebook_url_admin' do
@@ -42,7 +42,7 @@ describe Concerns::SocialHelpersHandler do
     before do
       @controller.request = OpenStruct.new(host: 'neighborly.local')
 
-      controller.stub(:current_user).and_return(current_user)
+      allow(controller).to receive(:current_user).and_return(current_user)
     end
 
     it { expect(@controller.display_uservoice_sso).to_not be_nil }

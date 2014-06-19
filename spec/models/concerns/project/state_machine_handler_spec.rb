@@ -35,7 +35,11 @@ describe Project::StateMachineHandler do
         project.push_to_draft
         project
       end
-      its(:draft?){ should be_true }
+
+      describe '#draft?' do
+        subject { super().draft? }
+        it { should be_true }
+      end
     end
 
     describe '#rejected?' do
@@ -52,11 +56,15 @@ describe Project::StateMachineHandler do
     describe '#reject' do
       before { project.update_attributes state: 'draft' }
       subject do
-        project.should_receive(:notify_observers).with(:from_draft_to_rejected)
+        expect(project).to receive(:notify_observers).with(:from_draft_to_rejected)
         project.reject
         project
       end
-      its(:rejected?){ should be_true }
+
+      describe '#rejected?' do
+        subject { super().rejected? }
+        it { should be_true }
+      end
     end
 
     describe '#push_to_trash' do
@@ -67,20 +75,30 @@ describe Project::StateMachineHandler do
         project
       end
 
-      its(:deleted?) { should be_true }
-      its(:permalink) { should == "deleted_project_#{project.id}" }
+      describe '#deleted?' do
+        subject { super().deleted? }
+        it { should be_true }
+      end
+
+      describe '#permalink' do
+        subject { super().permalink }
+        it { should == "deleted_project_#{project.id}" }
+      end
     end
 
     describe '#launch' do
       before { project.push_to_draft }
 
       subject do
-        project.should_receive(:notify_observers).with(:from_draft_to_online)
+        expect(project).to receive(:notify_observers).with(:from_draft_to_online)
         project.launch
         project
       end
 
-      its(:online?){ should be_true }
+      describe '#online?' do
+        subject { super().online? }
+        it { should be_true }
+      end
       it('should call after transition method to notify the project owner'){ subject }
       it 'should persist the online_date' do
         project.launch
@@ -105,7 +123,11 @@ describe Project::StateMachineHandler do
         before do
           main_project.update_attributes state: 'draft'
         end
-        its(:finish) { should be_false }
+
+        describe '#finish' do
+          subject { super().finish }
+          it { should be_false }
+        end
       end
 
       context 'when project is expired and the sum of the pending contributions and confirmed contributions dont reached the goal' do
@@ -114,7 +136,10 @@ describe Project::StateMachineHandler do
           subject.finish
         end
 
-        its(:failed?) { should be_true }
+        describe '#failed?' do
+          subject { super().failed? }
+          it { should be_true }
+        end
       end
 
       context 'when project is expired and have recent contributions without confirmation' do
@@ -123,14 +148,17 @@ describe Project::StateMachineHandler do
           subject.finish
         end
 
-        its(:waiting_funds?) { should be_true }
+        describe '#waiting_funds?' do
+          subject { super().waiting_funds? }
+          it { should be_true }
+        end
       end
 
       context 'when project already hit the goal and passed the waiting_funds time' do
         before do
           main_project.update_attributes state: 'waiting_funds'
-          subject.stub(:pending_contributions_reached_the_goal?).and_return(true)
-          subject.stub(:reached_goal?).and_return(true)
+          allow(subject).to receive(:pending_contributions_reached_the_goal?).and_return(true)
+          allow(subject).to receive(:reached_goal?).and_return(true)
           subject.online_date = 2.weeks.ago
           subject.online_days = 0
         end
@@ -140,7 +168,10 @@ describe Project::StateMachineHandler do
             subject.finish
           end
 
-          its(:successful?) { should be_true }
+          describe '#successful?' do
+            subject { super().successful? }
+            it { should be_true }
+          end
         end
 
         context "when campaign type is flexible" do
@@ -149,14 +180,17 @@ describe Project::StateMachineHandler do
             subject.finish
           end
 
-          its(:successful?) { should be_true }
+          describe '#successful?' do
+            subject { super().successful? }
+            it { should be_true }
+          end
         end
       end
 
       context 'when project already hit the goal and still is in the waiting_funds time' do
         before do
-          subject.stub(:pending_contributions_reached_the_goal?).and_return(true)
-          subject.stub(:reached_goal?).and_return(true)
+          allow(subject).to receive(:pending_contributions_reached_the_goal?).and_return(true)
+          allow(subject).to receive(:reached_goal?).and_return(true)
           create(:contribution, project: main_project, user: user, value: 20, state: 'waiting_confirmation')
           main_project.update_attributes state: 'waiting_funds'
         end
@@ -165,7 +199,11 @@ describe Project::StateMachineHandler do
           before do
             subject.finish
           end
-          its(:successful?) { should be_false }
+
+          describe '#successful?' do
+            subject { super().successful? }
+            it { should be_false }
+          end
         end
 
         context "when project is flexible" do
@@ -174,7 +212,10 @@ describe Project::StateMachineHandler do
             subject.finish
           end
 
-          its(:successful?) { should be_false }
+          describe '#successful?' do
+            subject { super().successful? }
+            it { should be_false }
+          end
         end
       end
 
@@ -193,12 +234,15 @@ describe Project::StateMachineHandler do
             subject.finish
           end
 
-          its(:failed?) { should be_true }
+          describe '#failed?' do
+            subject { super().failed? }
+            it { should be_true }
+          end
 
           it "should generate credits for users" do
             contribution.confirm!
             user.reload
-            user.credits.should == 20
+            expect(user.credits).to eq(20)
           end
         end
 
@@ -208,12 +252,15 @@ describe Project::StateMachineHandler do
             subject.finish
           end
 
-          its(:failed?) { should be_false }
+          describe '#failed?' do
+            subject { super().failed? }
+            it { should be_false }
+          end
 
           it "should generate credits for users" do
             contribution.confirm!
             user.reload
-            user.credits.should == 0
+            expect(user.credits).to eq(0)
           end
         end
       end

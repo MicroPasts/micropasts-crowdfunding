@@ -12,6 +12,6 @@ describe ContributionReportsForProjectOwner do
   it 'exclude non confirmed contributions from list' do
     contribution = create(:contribution, state: :waiting_confirmation)
     subject      = described_class.new(contribution.project)
-    expect(subject).to have(0).items
+    expect(subject.count).to eq(0)
   end
 end

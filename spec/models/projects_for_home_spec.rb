@@ -252,7 +252,7 @@ describe ProjectsForHome do
     it 'should limit in 4 projects' do
       create_list(:match, 5)
 
-      expect(ProjectsForHome.with_active_matches).to have(4).items
+      expect(ProjectsForHome.with_active_matches.size).to eq(4)
     end
 
     it 'should return Project instances' do

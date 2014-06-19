@@ -18,7 +18,11 @@ describe Channel::StateMachineHandler do
         channel.push_to_draft
         channel
       end
-      its(:draft?){ should be_true }
+
+      describe '#draft?' do
+        subject { super().draft? }
+        it { should be_true }
+      end
     end
 
     describe '#push_to_online' do
@@ -28,7 +32,10 @@ describe Channel::StateMachineHandler do
         channel
       end
 
-      its(:online?){ should be_true }
+      describe '#online?' do
+        subject { super().online? }
+        it { should be_true }
+      end
     end
 
     describe '#online?' do

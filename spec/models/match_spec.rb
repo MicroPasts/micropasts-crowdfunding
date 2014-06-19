@@ -29,7 +29,7 @@ describe Match do
 
       it 'returns no errors with starts_at between current_date and project\'s expiration date' do
         project = Project.new
-        project.stub(:expires_at).and_return(10.days.from_now)
+        allow(project).to receive(:expires_at).and_return(10.days.from_now)
         subject.project   = project
 
         subject.starts_at   = project.expires_at - 3.days
@@ -45,7 +45,7 @@ describe Match do
 
       it 'returns error with finishes_at after project\'s expiration date' do
         project = Project.new
-        project.stub(:expires_at).and_return(2.days.from_now)
+        allow(project).to receive(:expires_at).and_return(2.days.from_now)
         subject.project     = project
 
         subject.finishes_at = project.expires_at + 3.days
@@ -55,7 +55,7 @@ describe Match do
 
       it 'returns no errors with finishes_at between starts_at and project\'s expiration date' do
         project = Project.new
-        project.stub(:expires_at).and_return(10.days.from_now)
+        allow(project).to receive(:expires_at).and_return(10.days.from_now)
         subject.project   = project
 
         subject.starts_at   = project.expires_at - 8.days
@@ -105,8 +105,8 @@ describe Match do
 
       it 'uses UTC\'s day as definition of today for starts_at attribute' do
         current_time = Time.new(2014, 5, 10, 2, 0, 0, 5.hours)
-        Time.stub(:now).and_return(current_time)
-        Date.stub(:current).and_return(Date.new(2014, 5, 10))
+        allow(Time).to receive(:now).and_return(current_time)
+        allow(Date).to receive(:current).and_return(Date.new(2014, 5, 10))
 
         match = build(:match, starts_at: Date.current)
         match.save(validate: false)
@@ -162,7 +162,7 @@ describe Match do
 
     it 'skips contributions out of available_to_count scope' do
       create(:contribution, project: subject.project, value: 11, state: :canceled)
-      Contribution.stub(:available_to_count).and_return(Contribution.none)
+      allow(Contribution).to receive(:available_to_count).and_return(Contribution.none)
       expect(subject.reload.pledged).to be_zero
     end
   end
@@ -177,7 +177,7 @@ describe Match do
 
     it 'skips contributions out of available_to_count scope' do
       create(:contribution, project: subject.project, value: 11, state: :canceled)
-      Contribution.stub(:available_to_count).and_return(Contribution.none)
+      allow(Contribution).to receive(:available_to_count).and_return(Contribution.none)
       expect(subject.reload.total_pledged).to be_zero
     end
   end

@@ -19,12 +19,12 @@ describe OmniauthCallbacksController do
     let(:provider) { FactoryGirl.create(:oauth_provider, name: :facebook) }
     let(:serialized_user) { { email: 'juquinha@neighbor.ly' } }
     before do
-      controller.stub(:current_user).and_return(user)
+      allow(controller).to receive(:current_user).and_return(user)
     end
 
     describe 'GET \'facebook\'' do
       it 'completes an omniauth signin with serialized omniauth user' do
-        OmniauthUserSerializer.any_instance.stub(:to_h).and_return(serialized_user)
+        allow_any_instance_of(OmniauthUserSerializer).to receive(:to_h).and_return(serialized_user)
         session[:new_user_attrs] = { email: 'foobar@example.com' }
         expect_any_instance_of(OmniauthSignIn).to receive(:complete).
           with(serialized_user, session[:new_user_attrs])
@@ -34,7 +34,7 @@ describe OmniauthCallbacksController do
       describe 'response' do
         context 'on OmniauthSignIn with status :success' do
           before do
-            OmniauthSignIn.any_instance.stub(:status).and_return(:success)
+            allow_any_instance_of(OmniauthSignIn).to receive(:status).and_return(:success)
           end
 
           it 'sign in user' do
@@ -44,7 +44,7 @@ describe OmniauthCallbacksController do
 
           it 'redirects to default path of Devise\'s logins' do
             path = 'http://example.com/foobar'
-            controller.stub(:after_sign_in_path_for).and_return(path)
+            allow(controller).to receive(:after_sign_in_path_for).and_return(path)
             get :facebook
             expect(response).to redirect_to(path)
           end
@@ -52,11 +52,11 @@ describe OmniauthCallbacksController do
 
         context 'on OmniauthSignIn with status :needs_ownership_confirmation' do
           before do
-            OmniauthSignIn.any_instance.stub(:status).and_return(:needs_ownership_confirmation)
+            allow_any_instance_of(OmniauthSignIn).to receive(:status).and_return(:needs_ownership_confirmation)
           end
 
           it 'stores omniauth sign in data in session' do
-            OmniauthSignIn.any_instance.stub(:data).and_return(serialized_user)
+            allow_any_instance_of(OmniauthSignIn).to receive(:data).and_return(serialized_user)
             get :facebook
             expect(session[:new_user_attrs]).to eql(serialized_user)
           end
@@ -69,11 +69,11 @@ describe OmniauthCallbacksController do
 
         context 'on OmniauthSignIn with status :needs_email' do
           before do
-            OmniauthSignIn.any_instance.stub(:status).and_return(:needs_email)
+            allow_any_instance_of(OmniauthSignIn).to receive(:status).and_return(:needs_email)
           end
 
           it 'stores omniauth sign in data in session' do
-            OmniauthSignIn.any_instance.stub(:data).and_return(serialized_user)
+            allow_any_instance_of(OmniauthSignIn).to receive(:data).and_return(serialized_user)
             get :facebook
             expect(session[:new_user_attrs]).to eql(serialized_user)
           end

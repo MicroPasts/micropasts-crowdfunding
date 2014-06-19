@@ -14,6 +14,6 @@ describe "Users", js: true do
       login
     end
 
-    it { current_path.should == project_path(@project) }
+    it { expect(current_path).to eq(project_path(@project)) }
   end
 end

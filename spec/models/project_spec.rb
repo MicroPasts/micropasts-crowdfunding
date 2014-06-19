@@ -63,8 +63,8 @@ describe Project do
           create(:contribution, state: 'confirmed', project: project_03, confirmed_at: 3.hours.from_now )
         end
 
-        it { should have(2).items }
-        it { subject.include?(project_02).should be_false }
+        it { expect(subject.size).to eq(2) }
+        it { expect(subject).to_not include(project_02) }
       end
 
       context "when does not have any confirmed contribution today" do
@@ -74,7 +74,9 @@ describe Project do
           create(:contribution, state: 'confirmed', project: project_03, confirmed_at: 5.days.ago )
         end
 
-        it { should have(0).items }
+        it 'has no items' do
+          expect(subject.size).to eq(0)
+        end
       end
     end
 
@@ -105,8 +107,8 @@ describe Project do
 
     describe '.to_finish' do
       before do
-        Project.should_receive(:expired).and_call_original
-        Project.should_receive(:with_states).with(['online', 'waiting_funds']).and_call_original
+        expect(Project).to receive(:expired).and_call_original
+        expect(Project).to receive(:with_states).with(['online', 'waiting_funds']).and_call_original
       end
       it "should call scope expired and filter states that can be finished" do
         Project.to_finish
@@ -207,7 +209,9 @@ describe Project do
       create(:project, location: 'Kansas City, KS', state: 'draft')
     end
     subject { Project.locations }
-    it { should have(2).items }
+    it 'has 2 items' do
+      expect(subject.size).to eq(2)
+    end
   end
 
   describe ".find_by_permalink!" do
@@ -288,8 +292,8 @@ describe Project do
     let(:pledged){ 0.0 }
     let(:goal){ 0.0 }
     before do
-        project.stub(:pledged).and_return(pledged)
-        project.stub(:goal).and_return(goal)
+        allow(project).to receive(:pledged).and_return(pledged)
+        allow(project).to receive(:goal).and_return(goal)
     end
 
     context "when goal == pledged > 0" do
@@ -328,15 +332,15 @@ describe Project do
     subject{ project.pledged }
     context "when project_total is nil" do
       before do
-        project.stub(:project_total).and_return(nil)
+        allow(project).to receive(:project_total).and_return(nil)
       end
       it{ should == 0 }
     end
     context "when project_total exists" do
       before do
-        project_total = mock()
-        project_total.stub(:pledged).and_return(10.0)
-        project.stub(:project_total).and_return(project_total)
+        project_total = double()
+        allow(project_total).to receive(:pledged).and_return(10.0)
+        allow(project).to receive(:project_total).and_return(project_total)
       end
       it{ should == 10.0 }
     end
@@ -346,15 +350,15 @@ describe Project do
     subject { project.total_payment_service_fee }
 
     context "when project_total is nil" do
-      before { project.stub(:project_total).and_return(nil) }
+      before { allow(project).to receive(:project_total).and_return(nil) }
       it { should == 0 }
     end
 
     context "when project_total exists" do
       before do
-        project_total = mock()
-        project_total.stub(:total_payment_service_fee).and_return(4.0)
-        project.stub(:project_total).and_return(project_total)
+        project_total = double()
+        allow(project_total).to receive(:total_payment_service_fee).and_return(4.0)
+        allow(project).to receive(:project_total).and_return(project_total)
       end
 
       it { should == 4.0 }
@@ -365,15 +369,15 @@ describe Project do
     subject{ project.total_contributions }
     context "when project_total is nil" do
       before do
-        project.stub(:project_total).and_return(nil)
+        allow(project).to receive(:project_total).and_return(nil)
       end
       it{ should == 0 }
     end
     context "when project_total exists" do
       before do
-        project_total = mock()
-        project_total.stub(:total_contributions).and_return(1)
-        project.stub(:project_total).and_return(project_total)
+        project_total = double()
+        allow(project_total).to receive(:total_contributions).and_return(1)
+        allow(project).to receive(:project_total).and_return(project_total)
       end
       it{ should == 1 }
     end
@@ -435,7 +439,7 @@ describe Project do
   describe '#pending_contributions_reached_the_goal?' do
     let(:project) { create(:project, goal: 200) }
 
-    before { project.stub(:pleged) { 100 } }
+    before { allow(project).to receive(:pleged) { 100 } }
 
     subject { project.pending_contributions_reached_the_goal? }
 
@@ -504,7 +508,7 @@ describe Project do
         project.tags = ['Tag 1', 'Tag 2', 'Tag 3'].map {|tag_name| Tag.find_or_create_by(name: tag_name.downcase) }
       end
 
-      it { expect(project.tag_list).to have(3).tags }
+      it { expect(project.tag_list.size).to eq(3) }
     end
 
     describe '#tag_list=' do
@@ -514,13 +518,13 @@ describe Project do
           project.save
         end
 
-        it { expect(project.tags).to have(4).tags }
+        it { expect(project.tags.size).to eq(4) }
       end
 
       context 'as attribute' do
         let(:project_with_tags) { create(:project, tag_list: 'Tag 1, Tag 2') }
 
-        it { expect(project_with_tags.tags).to have(2).tags }
+        it { expect(project_with_tags.tags.size).to eq(2) }
       end
 
       context 'unassign tags' do
@@ -533,7 +537,7 @@ describe Project do
           project.reload
         end
 
-        it { expect(project.tags).to have(3).tags }
+        it { expect(project.tags.size).to eq(3) }
       end
     end
   end
@@ -562,7 +566,7 @@ describe Project do
 
   describe 'paid?' do
     subject { create(:project, state: 'online') }
-    before { Configuration.stub(:[]).with(:platform_fee).and_return(0.1) }
+    before { allow(Configuration).to receive(:[]).with(:platform_fee).and_return(0.1) }
 
     it 'returns false when no payouts are recorded for the contributions' do
       create(:contribution, project: subject, payment_method: 'paypal')

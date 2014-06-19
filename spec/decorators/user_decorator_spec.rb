@@ -59,8 +59,8 @@ describe UserDecorator do
         let(:user){ build(:user, uploaded_image: 'image.png' )}
         before do
           image = double(url: 'image.png')
-          image.stub(:thumb_avatar).and_return(image)
-          user.stub(:uploaded_image).and_return(image)
+          allow(image).to receive(:thumb_avatar).and_return(image)
+          allow(user).to receive(:uploaded_image).and_return(image)
         end
         it{ should == 'image.png' }
       end
@@ -81,9 +81,9 @@ describe UserDecorator do
         let(:user){ build(:user, profile_type: 'organization', organization_attributes: { image: 'image.png'} )}
         before do
           image = double(url: 'image.png')
-          image.stub(:thumb).and_return(image)
-          image.stub(:large).and_return(image)
-          user.organization.stub(:image).and_return(image)
+          allow(image).to receive(:thumb).and_return(image)
+          allow(image).to receive(:large).and_return(image)
+          allow(user.organization).to receive(:image).and_return(image)
         end
         it{ should == 'image.png' }
       end
@@ -99,9 +99,9 @@ describe UserDecorator do
         let(:user){ create(:channel, image: 'image.png').user.reload }
         before do
           image = double(url: 'image.png')
-          image.stub(:thumb).and_return(image)
-          image.stub(:large).and_return(image)
-          user.channel.stub(:image).and_return(image)
+          allow(image).to receive(:thumb).and_return(image)
+          allow(image).to receive(:large).and_return(image)
+          allow(user.channel).to receive(:image).and_return(image)
         end
         it{ should == 'image.png' }
       end
@@ -115,17 +115,29 @@ describe UserDecorator do
 
   describe "#short_name" do
     subject { create(:user, name: 'My Name Is Lorem Ipsum Dolor Sit Amet') }
-    its(:short_name) { should == 'My Name Is Lorem ...' }
+
+    describe '#short_name' do
+      subject { super().short_name }
+      it { should == 'My Name Is Lorem ...' }
+    end
   end
 
   describe "#medium_name" do
     subject { create(:user, name: 'My Name Is Lorem Ipsum Dolor Sit Amet And This Is a Bit Name I Think') }
-    its(:medium_name) { should == 'My Name Is Lorem Ipsum Dolor Sit Amet A...' }
+
+    describe '#medium_name' do
+      subject { super().medium_name }
+      it { should == 'My Name Is Lorem Ipsum Dolor Sit Amet A...' }
+    end
   end
 
   describe "#display_credits" do
     subject { create(:user) }
-    its(:display_credits) { should == '$0.00'}
+
+    describe '#display_credits' do
+      subject { super().display_credits }
+      it { should == '$0.00'}
+    end
   end
 
   describe "#display_total_of_contributions" do
@@ -134,7 +146,11 @@ describe UserDecorator do
       before do
         create(:contribution, state: 'confirmed', user: subject, value: 500.0)
       end
-      its(:display_total_of_contributions) { should == '$500.00'}
+
+      describe '#display_total_of_contributions' do
+        subject { super().display_total_of_contributions }
+        it { should == '$500.00'}
+      end
     end
   end
 end

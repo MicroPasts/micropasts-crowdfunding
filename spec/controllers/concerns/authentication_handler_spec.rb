@@ -7,7 +7,7 @@ describe Concerns::AuthenticationHandler do
     subject { controller.base_domain_with_https_url_params }
     context 'when rails env is production and IS_STAGING is not setted' do
       before do
-        Rails.env.stub(:production?).and_return(true)
+        allow(Rails.env).to receive(:production?).and_return(true)
         ENV['IS_STAGING'] = nil
       end
 
@@ -21,7 +21,7 @@ describe Concerns::AuthenticationHandler do
 
     context 'when the env is production and IS_STAGING is setted' do
       before do
-        Rails.env.stub(:production?).and_return(true)
+        allow(Rails.env).to receive(:production?).and_return(true)
         ENV['IS_STAGING'] = 'true'
       end
 
@@ -32,7 +32,7 @@ describe Concerns::AuthenticationHandler do
 
     context 'when the env is not production and IS_STAGING is setted' do
       before do
-        Rails.env.stub(:production?).and_return(false)
+        allow(Rails.env).to receive(:production?).and_return(false)
         ENV['IS_STAGING'] = 'true'
       end
 

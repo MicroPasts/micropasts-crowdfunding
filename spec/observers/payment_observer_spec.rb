@@ -7,8 +7,8 @@ describe PaymentObserver do
     let(:confirmed_at)     { Time.now }
 
     before do
-      Notification.unstub(:notify)
-      Notification.unstub(:notify_once)
+      allow(Notification).to receive(:notify).and_call_original
+      allow(Notification).to receive(:notify_once).and_call_original
     end
 
     describe '#after_create' do
@@ -23,7 +23,7 @@ describe PaymentObserver do
         before { resource.confirmed_at = nil }
 
         it 'notifies the contributor about confirmation' do
-          Configuration.stub(:[]).with(:email_payments).and_return('finan@c.me')
+          allow(Configuration).to receive(:[]).with(:email_payments).and_return('finan@c.me')
 
           expect(Notification).to receive(:notify_once).
             with(:payment_confirmed,
@@ -52,7 +52,7 @@ describe PaymentObserver do
 
     describe '#from_confirmed_to_canceled' do
       let(:user) { create(:user, email: 'finan@c.me') }
-      before     { Configuration.stub(:[]).with(:email_payments).and_return('finan@c.me') }
+      before     { allow(Configuration).to receive(:[]).with(:email_payments).and_return('finan@c.me') }
 
       it 'notifies backoffice about cancelation' do
         expect(Notification).to receive(:notify_once).
@@ -67,10 +67,10 @@ describe PaymentObserver do
 
     describe '#from_confirmed_to_requested_refund' do
       let(:user) { create(:user, email: 'finan@c.me') }
-      before     { Configuration.stub(:[]).with(:email_payments).and_return('finan@c.me') }
+      before     { allow(Configuration).to receive(:[]).with(:email_payments).and_return('finan@c.me') }
 
       it 'notifies backoffice about the refund request' do
-        resource.user.stub(:credits).and_return(1000)
+        allow(resource.user).to receive(:credits).and_return(1000)
         expect(Notification).to receive(:notify_once).
           with(:refund_request,
             user,

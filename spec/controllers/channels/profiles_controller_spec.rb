@@ -6,11 +6,14 @@ describe Channels::ProfilesController do
 
   describe "GET show" do
     before do
-      request.stub(:subdomain).and_return(channel.permalink)
+      allow(request).to receive(:subdomain).and_return(channel.permalink)
       get :show, id: 'sample'
     end
 
-    its(:status){ should == 200 }
+    describe '#status' do
+      subject { super().status }
+      it { should == 200 }
+    end
   end
 end
 

@@ -40,7 +40,7 @@ describe Contribution do
 
     subject { Contribution.confirmed_today }
 
-    it { should have(7).items }
+    it { expect(subject.size).to eq(7) }
   end
 
   describe '.can_cancel' do
@@ -50,7 +50,9 @@ describe Contribution do
       before do
         create(:contribution, state: 'waiting_confirmation', created_at: 3.weekdays_ago)
       end
-      it { should have(0).item }
+      it 'has no item' do
+        expect(subject.size).to eq(0)
+      end
     end
 
     context 'when we have contributions that is passed the confirmation time' do
@@ -58,7 +60,9 @@ describe Contribution do
         create(:contribution, state: 'waiting_confirmation', created_at: 3.weekdays_ago)
         create(:contribution, state: 'waiting_confirmation', created_at: 7.weekdays_ago)
       end
-      it { should have(1).itens }
+      it 'has 1 iten' do
+        expect(subject.size).to eq(1)
+      end
     end
   end
 

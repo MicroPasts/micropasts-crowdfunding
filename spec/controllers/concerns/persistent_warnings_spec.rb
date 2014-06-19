@@ -11,21 +11,21 @@ describe Concerns::PersistentWarnings do
   end
   subject { MyController.new }
   before do
-    subject.stub(:current_user).and_return(current_user)
-    subject.stub(:user_signed_in?).and_return(is_user_signed_in)
-    subject.stub(:flash).and_return(flash)
-    subject.stub(:url_for)
+    allow(subject).to receive(:current_user).and_return(current_user)
+    allow(subject).to receive(:user_signed_in?).and_return(is_user_signed_in)
+    allow(subject).to receive(:flash).and_return(flash)
+    allow(subject).to receive(:url_for)
   end
 
   describe 'setter of warning with highest priority' do
     it 'sets notice flash with the warning when one exists' do
-      subject.stub(:persistent_warning).and_return(nil)
+      allow(subject).to receive(:persistent_warning).and_return(nil)
       expect(flash).to_not receive(:notice=)
       subject.set_persistent_warning
     end
 
     it 'sets notice flash with the warning when one is available' do
-      subject.stub(:persistent_warning).and_return('foobar')
+      allow(subject).to receive(:persistent_warning).and_return('foobar')
       expect(flash).to receive(:notice=).with('foobar')
       subject.set_persistent_warning
     end
@@ -35,7 +35,7 @@ describe Concerns::PersistentWarnings do
     context 'signed in' do
       context 'with unconfirmed account' do
         before do
-          current_user.stub(:confirmed?).and_return(false)
+          allow(current_user).to receive(:confirmed?).and_return(false)
         end
 
         context 'with completed profile' do
@@ -68,7 +68,7 @@ describe Concerns::PersistentWarnings do
 
       context 'with confirmed account' do
         before do
-          current_user.stub(:confirmed?).and_return(true)
+          allow(current_user).to receive(:confirmed?).and_return(true)
         end
 
         context 'with completed profile' do

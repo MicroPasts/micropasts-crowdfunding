@@ -9,7 +9,7 @@ describe Projects::ContributionsController do
   subject{ response }
 
   before do
-    controller.stub(:current_user).and_return(user)
+    allow(controller).to receive(:current_user).and_return(user)
   end
 
   describe "PUT credits_checkout" do
@@ -26,14 +26,14 @@ describe Projects::ContributionsController do
       let(:user){ create(:user) }
       it{ should redirect_to(root_path) }
       it 'should set alert flash' do
-        request.flash.alert.should_not be_empty
+        expect(request.flash.alert).not_to be_empty
       end
     end
 
     context "with correct user but insufficient credits" do
       let(:user){ contribution.user }
-      it('should not confirm contribution'){ contribution.reload.confirmed?.should be_false }
-      it('should set flash failure'){ request.flash.alert.should == I18n.t('controllers.projects.contributions.credits_checkout.no_credits') }
+      it('should not confirm contribution'){ expect(contribution.reload.confirmed?).to be_false }
+      it('should set flash failure'){ expect(request.flash.alert).to eq(I18n.t('controllers.projects.contributions.credits_checkout.no_credits')) }
       it{ should redirect_to(new_project_contribution_path(project)) }
     end
 
@@ -45,9 +45,9 @@ describe Projects::ContributionsController do
         contribution.user
       end
 
-      it('should confirm contribution') { contribution.reload.confirmed?.should be_true }
+      it('should confirm contribution') { expect(contribution.reload.confirmed?).to be_true }
       it'should set notice flash' do
-        request.flash.notice.should == I18n.t('controllers.projects.contributions.credits_checkout.success')
+        expect(request.flash.notice).to eq(I18n.t('controllers.projects.contributions.credits_checkout.success'))
       end
       it { should redirect_to(project_contribution_path(project, contribution.id)) }
     end
@@ -61,7 +61,7 @@ describe Projects::ContributionsController do
 
     context "when no user is logged" do
       it{ should redirect_to new_user_session_path }
-      it('should set the session[:return_to]'){ session[:return_to].should == "/test_path" }
+      it('should set the session[:return_to]'){ expect(session[:return_to]).to eq("/test_path") }
     end
 
     context "when user is logged in" do
@@ -69,9 +69,21 @@ describe Projects::ContributionsController do
 
       let(:user){ create(:user) }
       let(:contribution){ create(:contribution, value: 10.00, credits: true, project: project, state: 'pending', user: user) }
-      its(:body){ should =~ /#{I18n.t('projects.contributions.edit.title', project_name: project.name)}/ }
-      its(:body){ should =~ /#{project.name}/ }
-      its(:body){ should =~ /\$10/ }
+
+      describe '#body' do
+        subject { super().body }
+        it { should =~ /#{I18n.t('projects.contributions.edit.title', project_name: project.name)}/ }
+      end
+
+      describe '#body' do
+        subject { super().body }
+        it { should =~ /#{project.name}/ }
+      end
+
+      describe '#body' do
+        subject { super().body }
+        it { should =~ /\$10/ }
+      end
     end
 
     describe 'persistent warnings' do
@@ -95,7 +107,7 @@ describe Projects::ContributionsController do
 
     context "when no user is logged" do
       it{ should redirect_to new_user_session_path }
-      it('should set the session[:return_to]'){ session[:return_to].should == "/test_path" }
+      it('should set the session[:return_to]'){ expect(session[:return_to]).to eq("/test_path") }
     end
 
     context "when user is logged in" do
@@ -133,7 +145,7 @@ describe Projects::ContributionsController do
     let(:browser){ double("browser", ie9?: false, modern?: true) }
 
     before do
-      Project.any_instance.stub(:online?).and_return(online)
+      allow_any_instance_of(Project).to receive(:online?).and_return(online)
       get :new, {locale: :pt, project_id: project}
     end
 
@@ -153,9 +165,20 @@ describe Projects::ContributionsController do
 
       it{ should render_template("projects/contributions/new") }
 
-      its(:body) { should =~ /#{I18n.t('projects.contributions.new.title')}/ }
-      its(:body) { should =~ /#{I18n.t('controllers.projects.contributions.new.no_reward')}/ }
-      its(:body) { should =~ /#{project.name}/ }
+      describe '#body' do
+        subject { super().body }
+        it { should =~ /#{I18n.t('projects.contributions.new.title')}/ }
+      end
+
+      describe '#body' do
+        subject { super().body }
+        it { should =~ /#{I18n.t('controllers.projects.contributions.new.no_reward')}/ }
+      end
+
+      describe '#body' do
+        subject { super().body }
+        it { should =~ /#{project.name}/ }
+      end
     end
 
     describe 'persistent warnings' do
@@ -181,7 +204,7 @@ describe Projects::ContributionsController do
     context "when user logged in is different from contribution" do
       let(:user){ create(:user) }
       it{ should redirect_to root_path }
-      it('should set flash failure'){ request.flash.alert.should_not be_empty }
+      it('should set flash failure'){ expect(request.flash.alert).not_to be_empty }
     end
 
     context "when contribution is logged in" do
@@ -189,7 +212,11 @@ describe Projects::ContributionsController do
 
       let(:user){ contribution.user }
       it{ should be_successful }
-      its(:body){ should =~ /#{I18n.t('projects.contributions.show.title')}/ }
+
+      describe '#body' do
+        subject { super().body }
+        it { should =~ /#{I18n.t('projects.contributions.show.title')}/ }
+      end
     end
   end
 

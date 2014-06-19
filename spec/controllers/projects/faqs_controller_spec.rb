@@ -5,7 +5,7 @@ describe Projects::FaqsController do
   let(:current_user) { nil }
 
   before do
-    controller.stub(:current_user).and_return(current_user)
+    allow(controller).to receive(:current_user).and_return(current_user)
   end
 
   subject { response }
@@ -16,22 +16,30 @@ describe Projects::FaqsController do
     subject { ProjectFaq.where(project_id: faq.project) }
 
     context 'When user is a guest' do
-      it{ should have(1).item }
+      it'has 1 item' do
+        expect(subject.size).to eq(1)
+      end
     end
 
     context "When user is a registered user but don't the project owner" do
       let(:current_user){ create(:user) }
-      it{ should have(1).item }
+      it'has 1 item' do
+        expect(subject.size).to eq(1)
+      end
     end
 
     context 'When user is admin' do
       let(:current_user) { create(:user, admin: true) }
-      it{ should have(2).itens }
+      it'has 2 itens' do
+        expect(subject.size).to eq(2)
+      end
     end
 
     context 'When user is project_owner' do
       let(:current_user) { faq.project.user }
-      it{ should have(2).itens }
+      it'has 2 itens' do
+        expect(subject.size).to eq(2)
+      end
     end
   end
 
@@ -40,26 +48,41 @@ describe Projects::FaqsController do
     let(:total_faqs) { ProjectFaq.where(project_id: faq.project) }
 
     context 'When user is a guest' do
-      its(:status) { should == 302 }
-      it { total_faqs.should have(1).item }
+      describe '#status' do
+        subject { super().status }
+        it { should == 302 }
+      end
+      it { expect(total_faqs.size).to eq(1) }
     end
 
     context "When user is a registered user but don't the project owner" do
       let(:current_user){ create(:user) }
-      its(:status) { should == 302 }
-      it { total_faqs.should have(1).item }
+
+      describe '#status' do
+        subject { super().status }
+        it { should == 302 }
+      end
+      it { expect(total_faqs.size).to eq(1) }
     end
 
     context 'When user is admin' do
       let(:current_user) { create(:user, admin: true) }
-      its(:status) { should == 302 }
-      it { total_faqs.should have(0).item }
+
+      describe '#status' do
+        subject { super().status }
+        it { should == 302 }
+      end
+      it { expect(total_faqs.size).to eq(0) }
     end
 
     context 'When user is project_owner' do
       let(:current_user) { faq.project.user }
-      its(:status) { should == 302 }
-      it { total_faqs.should have(0).item }
+
+      describe '#status' do
+        subject { super().status }
+        it { should == 302 }
+      end
+      it { expect(total_faqs.size).to eq(0) }
     end
   end
 

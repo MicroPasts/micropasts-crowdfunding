@@ -11,7 +11,7 @@ describe UserObserver do
   end
 
   describe '#after_create' do
-    before { UserObserver.any_instance.unstub(:after_create) }
+    before { allow_any_instance_of(UserObserver).to receive(:after_create).and_call_original }
 
     context 'when the user is with temporary email' do
       it 'does not send to worker' do

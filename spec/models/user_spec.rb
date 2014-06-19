@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe User do
-  before { UserUploader.any_instance.stub(:download!) }
+  before { allow_any_instance_of(UserUploader).to receive(:download!) }
   let(:user){ create(:user) }
   let(:unfinished_project){ create(:project, state: 'online') }
   let(:successful_project){ create(:project, state: 'online') }
@@ -105,8 +105,16 @@ describe User do
         u.facebook_url = 'http://facebook.com/test'
       end
     end
-    its(:twitter_url){ should == 'http://twitter.com/dbiazus' }
-    its(:facebook_url){ should == 'http://facebook.com/test' }
+
+    describe '#twitter_url' do
+      subject { super().twitter_url }
+      it { should == 'http://twitter.com/dbiazus' }
+    end
+
+    describe '#facebook_url' do
+      subject { super().facebook_url }
+      it { should == 'http://facebook.com/test' }
+    end
   end
 
   describe "#total_contributed_projects" do
@@ -149,7 +157,7 @@ describe User do
       before do
         user.update_attributes moip_login: 'test'
       end
-      it("should perform the update"){ user.moip_login.should == 'test' }
+      it("should perform the update"){ expect(user.moip_login).to eq('test') }
     end
   end
 

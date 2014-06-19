@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe ::Configuration do
-  before { ENV.stub(:[]).with('SOME_CONFIG').and_return('some_value') }
+  before { allow(ENV).to receive(:[]).with('SOME_CONFIG').and_return('some_value') }
 
   context '.get' do
     context 'with existing key' do
@@ -11,7 +11,7 @@ describe ::Configuration do
     end
 
     context 'with undefined key' do
-      before { ENV.stub(:[]).with('NOT_FOUND_CONFIG').and_return(nil) }
+      before { allow(ENV).to receive(:[]).with('NOT_FOUND_CONFIG').and_return(nil) }
 
       it 'returns nil' do
         expect(described_class[:not_found_config]).to be_nil
@@ -34,7 +34,7 @@ describe ::Configuration do
     end
 
     context 'with undefined key' do
-      before { ENV.stub(:[]).with('NOT_FOUND_CONFIG').and_return(nil) }
+      before { allow(ENV).to receive(:[]).with('NOT_FOUND_CONFIG').and_return(nil) }
 
       it 'raises exception' do
         expect {

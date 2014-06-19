@@ -23,7 +23,7 @@ describe DiscoverController do
     end
 
     it 'should assigns filter' do
-      expect(assigns(:filters)).to have(1).filter
+      expect(assigns(:filters).size).to eq(1)
     end
   end
 
@@ -32,11 +32,11 @@ describe DiscoverController do
       before { get :index }
 
       it 'shoult get all project' do
-        expect(assigns(:projects).to_a).to have(5).items
+        expect(assigns(:projects).to_a.size).to eq(5)
       end
 
       it 'should assigns online channels' do
-        expect(assigns(:channels)).to have(1).channel
+        expect(assigns(:channels).size).to eq(1)
       end
     end
 

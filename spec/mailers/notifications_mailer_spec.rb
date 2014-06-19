@@ -13,8 +13,8 @@ describe NotificationsMailer do
 
       before do
         notification
-        Mail::Message.any_instance.stub(:deliver)
-        described_class.any_instance.should_receive(:mail).with({
+        allow_any_instance_of(Mail::Message).to receive(:deliver)
+        expect_any_instance_of(described_class).to receive(:mail).with({
           from: 'Catarse <contact@foo.bar>',
           to: notification.user.email,
           subject: 'Thank you for your contribution to Foo bar!',
@@ -35,8 +35,8 @@ describe NotificationsMailer do
 
       before do
         notification
-        Mail::Message.any_instance.stub(:deliver)
-        described_class.any_instance.should_receive(:mail).with({
+        allow_any_instance_of(Mail::Message).to receive(:deliver)
+        expect_any_instance_of(described_class).to receive(:mail).with({
           from: 'Catarse <contact@foo.bar>',
           to: notification.user.email,
           subject: 'Thank you for your contribution to Foo bar!',

@@ -8,14 +8,14 @@ describe ProjectObserver do
   subject{ contribution }
 
   before do
-    Notification.unstub(:notify)
-    Notification.unstub(:notify_once)
+    allow(Notification).to receive(:notify).and_call_original
+    allow(Notification).to receive(:notify_once).and_call_original
   end
 
   describe 'after_create' do
     let(:user) { create(:user, email: ::Configuration[:email_projects].dup)}
     before do
-      ProjectObserver.any_instance.should_receive(:after_create).and_call_original
+      expect_any_instance_of(ProjectObserver).to receive(:after_create).and_call_original
       user
       project
     end
@@ -176,8 +176,8 @@ describe ProjectObserver do
     let(:project){ create(:project, goal: 30, online_days: -7, state: 'waiting_funds') }
 
     before do
-      project.stub(:reached_goal?).and_return(true)
-      project.stub(:in_time_to_wait?).and_return(false)
+      allow(project).to receive(:reached_goal?).and_return(true)
+      allow(project).to receive(:in_time_to_wait?).and_return(false)
       project.finish
     end
 
@@ -240,8 +240,8 @@ describe ProjectObserver do
     let(:project){ create(:project, goal: 30, online_days: -7, state: 'waiting_funds') }
     let!(:user) { create(:user, email: Configuration[:email_payments].dup)}
     before do
-      project.stub(:reached_goal?).and_return(true)
-      project.stub(:in_time_to_wait?).and_return(false)
+      allow(project).to receive(:reached_goal?).and_return(true)
+      allow(project).to receive(:in_time_to_wait?).and_return(false)
       project.finish
     end
 

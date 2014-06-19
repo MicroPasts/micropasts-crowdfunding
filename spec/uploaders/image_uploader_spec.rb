@@ -24,7 +24,7 @@ describe ImageUploader do
 
     context "when it's mounted as :video_thumbnail" do
       before do
-        @uploader.stub(:mounted_as).and_return(:video_thumbnail)
+        allow(@uploader).to receive(:mounted_as).and_return(:video_thumbnail)
       end
       it{ should be_nil }
     end
@@ -39,8 +39,8 @@ describe ImageUploader do
 
     context "when in production env" do
       before do
-        Rails.env.stub(:production?).and_return(true)
-        ::Configuration.stub(:[]).with(:aws_access_key).and_return('test')
+        allow(Rails.env).to receive(:production?).and_return(true)
+        allow(::Configuration).to receive(:[]).with(:aws_access_key).and_return('test')
       end
       it{ should == :fog }
     end

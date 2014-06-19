@@ -71,9 +71,9 @@ describe Shared::PaymentStateMachineHandler do
       let(:initial_state) { 'confirmed' }
       let(:resource_is_credits) { false }
       before do
-        resource_observer_class.any_instance.stub(:notify_backoffice)
-        resource.stub(:credits).and_return(resource_is_credits)
-        resource.user.stub(:credits).and_return(credits)
+        allow_any_instance_of(resource_observer_class).to receive(:notify_backoffice)
+        allow(resource).to receive(:credits).and_return(resource_is_credits)
+        allow(resource.user).to receive(:credits).and_return(credits)
         resource.request_refund
       end
 
@@ -147,7 +147,7 @@ describe Shared::PaymentStateMachineHandler do
       it 'updates a MatchedContributionGenerator instance' do
         resource.state_transitions.map(&:event).each do |event|
           generator = double('MatchedContributionGenerator')
-          MatchedContributionGenerator.stub(:new).and_return(generator)
+          allow(MatchedContributionGenerator).to receive(:new).and_return(generator)
           expect(generator).to receive(:update)
 
           resource.public_send(event)

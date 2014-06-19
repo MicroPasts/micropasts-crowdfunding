@@ -113,7 +113,7 @@ group :development, :test do
   gem 'dotenv-rails'
   gem 'minitest'
   gem 'pry'
-  gem 'rspec-rails', '~> 2.14.2'
+  gem 'rspec-rails', '~> 2.14'
 end
 
 group :test do

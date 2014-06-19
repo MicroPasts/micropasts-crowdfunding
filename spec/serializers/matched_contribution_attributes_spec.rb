@@ -35,7 +35,7 @@ describe MatchedContributionAttributes do
     end
 
     context 'with remaining amount to complete match contribution' do
-      before { match.stub(:remaining_amount).and_return(160) }
+      before { allow(match).to receive(:remaining_amount).and_return(160) }
 
       it 'defines its value as contribution times match\'s value unit' do
         expect(subject.attributes[:value]).to eql(150)
@@ -43,7 +43,7 @@ describe MatchedContributionAttributes do
     end
 
     context 'with remaining amount to partially match contribution' do
-      before { match.stub(:remaining_amount).and_return(90) }
+      before { allow(match).to receive(:remaining_amount).and_return(90) }
 
       it 'defines its value limiting to remaining amount' do
         expect(subject.attributes[:value]).to eql(90)

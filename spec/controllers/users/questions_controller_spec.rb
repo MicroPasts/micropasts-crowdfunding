@@ -29,7 +29,7 @@ describe Users::QuestionsController do
   end
 
   context 'when user is logged in' do
-    before{ controller.stub(:current_user).and_return(current_user) }
+    before{ allow(controller).to receive(:current_user).and_return(current_user) }
 
     let(:current_user){ user }
 
@@ -53,7 +53,7 @@ describe Users::QuestionsController do
       end
 
       context 'shoul deliver the email' do
-        it { ActionMailer::Base.deliveries.should have(1).item }
+        it { expect(ActionMailer::Base.deliveries.size).to eq(1) }
       end
     end
   end

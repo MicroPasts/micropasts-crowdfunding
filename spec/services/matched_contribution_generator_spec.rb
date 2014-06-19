@@ -14,8 +14,8 @@ describe MatchedContributionGenerator do
 
     it 'uses MatchedContributionAttributes to get attributes for new contributions' do
       attrs = { foo: 'bar' }
-      MatchedContributionAttributes.any_instance.
-        stub(:attributes).
+      allow_any_instance_of(MatchedContributionAttributes).
+        to receive(:attributes).
         and_return(attrs)
       create(:match, project: contribution.project)
 
@@ -49,7 +49,7 @@ describe MatchedContributionGenerator do
 
     it 'notify observers when remaining amount of a mach is zero' do
       match = create(:match, project: contribution.project)
-      MatchFinisher.stub(:remaining_amount_of).and_return(0)
+      allow(MatchFinisher).to receive(:remaining_amount_of).and_return(0)
       expect(Match).to receive(:notify_observers).with(:match_been_met, match)
       subject.create
     end

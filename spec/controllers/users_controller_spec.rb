@@ -4,7 +4,7 @@ describe UsersController do
   render_views
   subject{ response }
   before do
-    controller.stub(:current_user).and_return(current_user)
+    allow(controller).to receive(:current_user).and_return(current_user)
   end
 
   let(:successful_project){ FactoryGirl.create(:project, state: 'successful') }
@@ -20,7 +20,7 @@ describe UsersController do
       end
       it("should update the user") do
         user.reload
-        user.twitter_url.should ==  'http://twitter.com/test'
+        expect(user.twitter_url).to eq('http://twitter.com/test')
       end
       it{ should redirect_to edit_user_path(user) }
       it { expect(flash.notice).to eq(I18n.t('controllers.users.update.success')) }
@@ -40,7 +40,10 @@ describe UsersController do
           put :update, id: user.id, locale: 'pt', user: { twitter_url: 'http://twitter.com/test' }, format: :json
         end
 
-        its(:status){ should == 200 }
+        describe '#status' do
+          subject { super().status }
+          it { should == 200 }
+        end
       end
 
       context 'failure' do
@@ -48,8 +51,15 @@ describe UsersController do
           put :update, id: user.id, locale: 'pt', user: { email: '' }, format: :json
         end
 
-        its(:body) { should == { status: :error }.to_json }
-        its(:status){ should == 200 }
+        describe '#body' do
+          subject { super().body }
+          it { should == { status: :error }.to_json }
+        end
+
+        describe '#status' do
+          subject { super().status }
+          it { should == 200 }
+        end
       end
     end
   end
@@ -64,13 +74,13 @@ describe UsersController do
 
     context "with wrong current password" do
       let(:current_password){ 'wrong_password' }
-      it{ flash.alert.should_not be_empty }
+      it{ expect(flash.alert).not_to be_empty }
       it{ should redirect_to settings_user_path(user) }
     end
 
     context "with right current password and right confirmation" do
-      it{ flash.notice.should_not be_empty }
-      it{ flash.alert.should      be_nil }
+      it{ expect(flash.notice).not_to be_empty }
+      it{ expect(flash.alert).to      be_nil }
       it{ should redirect_to settings_user_path(user) }
     end
   end
@@ -92,7 +102,7 @@ describe UsersController do
       context 'when account is not confirmed' do
         it("should not update the user") do
           user.reload
-          user.email.should == user.email
+          expect(user.email).to eq(user.email)
         end
         it{ should redirect_to root_path(user) }
       end
@@ -100,7 +110,7 @@ describe UsersController do
       context 'when account is confirmed' do
         it("should update the user") do
           user.reload.confirm!
-          user.email.should == 'new_email@bar.com'
+          expect(user.email).to eq('new_email@bar.com')
         end
         it{ should redirect_to root_path(user) }
       end
@@ -113,7 +123,7 @@ describe UsersController do
         get :show, id: user.id, locale: 'pt'
       end
 
-      it{ assigns(:facebook_url_admin).should include(user.facebook_id) }
+      it{ expect(assigns(:facebook_url_admin)).to include(user.facebook_id) }
     end
 
     context 'as a channel' do
@@ -139,7 +149,10 @@ describe UsersController do
       context 'as normal request' do
         before { get :edit, id: user }
 
-        its(:status){ should == 200 }
+        describe '#status' do
+          subject { super().status }
+          it { should == 200 }
+        end
 
         it 'should assigns the correct resource' do
           expect(assigns(:user)).to eq user
@@ -151,7 +164,10 @@ describe UsersController do
       context 'as xhr request' do
         before { xhr :get, :edit, id: user }
 
-        its(:status){ should == 200 }
+        describe '#status' do
+          subject { super().status }
+          it { should == 200 }
+        end
 
         it 'should assigns the correct resource' do
           expect(assigns(:user)).to eq user
@@ -176,7 +192,10 @@ describe UsersController do
       context 'as normal request' do
         before { get :credits, id: user }
 
-        its(:status){ should == 200 }
+        describe '#status' do
+          subject { super().status }
+          it { should == 200 }
+        end
 
         it 'should assigns the correct resource' do
           expect(assigns(:user)).to eq user
@@ -188,7 +207,10 @@ describe UsersController do
       context 'as xhr request' do
         before { xhr :get, :credits, id: user }
 
-        its(:status){ should == 200 }
+        describe '#status' do
+          subject { super().status }
+          it { should == 200 }
+        end
 
         it 'should assigns the correct resource' do
           expect(assigns(:user)).to eq user
@@ -213,7 +235,10 @@ describe UsersController do
       context 'as normal request' do
         before { get :settings, id: user }
 
-        its(:status){ should == 200 }
+        describe '#status' do
+          subject { super().status }
+          it { should == 200 }
+        end
 
         it 'should assigns the correct resource' do
           expect(assigns(:user)).to eq user
@@ -225,7 +250,10 @@ describe UsersController do
       context 'as xhr request' do
         before { xhr :get, :settings, id: user }
 
-        its(:status){ should == 200 }
+        describe '#status' do
+          subject { super().status }
+          it { should == 200 }
+        end
 
         it 'should assigns the correct resource' do
           expect(assigns(:user)).to eq user
@@ -250,7 +278,10 @@ describe UsersController do
       context 'as normal request' do
         before { get :payments, id: user }
 
-        its(:status){ should == 200 }
+        describe '#status' do
+          subject { super().status }
+          it { should == 200 }
+        end
 
         it 'should assigns the correct resource' do
           expect(assigns(:user)).to eq user
@@ -262,7 +293,10 @@ describe UsersController do
       context 'as xhr request' do
         before { xhr :get, :payments, id: user }
 
-        its(:status){ should == 200 }
+        describe '#status' do
+          subject { super().status }
+          it { should == 200 }
+        end
 
         it 'should assigns the correct resource' do
           expect(assigns(:user)).to eq user
@@ -285,7 +319,10 @@ describe UsersController do
     context "when I'm loggedn" do
       before { get :set_email }
 
-      its(:status){ should == 200 }
+      describe '#status' do
+        subject { super().status }
+        it { should == 200 }
+      end
 
       it 'should assigns the correct resource' do
         expect(assigns(:user)).to eq user

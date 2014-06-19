@@ -529,7 +529,7 @@ DEPENDENCIES
   ranked-model
   remotipart (~> 1.2.1)
   rmagick
-  rspec-rails (~> 2.14.2)
+  rspec-rails (~> 2.14)
   sass-rails (~> 4.0.3)
   schema_plus
   shoulda-matchers

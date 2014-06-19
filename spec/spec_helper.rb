@@ -85,7 +85,7 @@ RSpec.configure do |config|
   [:controller, :feature].each do |spec_type|
     config.before(:each, type: spec_type) do
       [:render_facebook_sdk, :render_facebook_like, :render_twitter, :display_uservoice_sso].each do |method|
-        ApplicationController.any_instance.stub(method)
+        allow_any_instance_of(ApplicationController).to receive(method)
       end
     end
   end
@@ -99,16 +99,16 @@ RSpec.configure do |config|
                             'state_code'   => 'NY',
                             'country'      => 'United States',
                             'country_code' => 'US'
-    Geocoder.stub :search => [Geocoder::Result::Base.stub(:new).and_return(result)]
+    Geocoder.stub :search => [allow(Geocoder::Result::Base).to receive(:new).and_return(result)]
     Geocoder.stub :coordinates => [result.latitude, result.longitude]
 
-    User.any_instance.stub(:subscribe_to_newsletter_list).and_return(true)
-    User.any_instance.stub(:unsubscribe_to_newsletter_list).and_return(true)
-    Project.any_instance.stub(:store_image_url).and_return('http://www.store_image_url.com')
-    ProjectObserver.any_instance.stub(:after_create)
-    UserObserver.any_instance.stub(:after_create)
-    Project.any_instance.stub(:download_video_thumbnail)
-    Notification.stub(:notify)
-    Notification.stub(:notify_once)
+    allow_any_instance_of(User).to receive(:subscribe_to_newsletter_list).and_return(true)
+    allow_any_instance_of(User).to receive(:unsubscribe_to_newsletter_list).and_return(true)
+    allow_any_instance_of(Project).to receive(:store_image_url).and_return('http://www.store_image_url.com')
+    allow_any_instance_of(ProjectObserver).to receive(:after_create)
+    allow_any_instance_of(UserObserver).to receive(:after_create)
+    allow_any_instance_of(Project).to receive(:download_video_thumbnail)
+    allow(Notification).to receive(:notify)
+    allow(Notification).to receive(:notify_once)
   end
 end

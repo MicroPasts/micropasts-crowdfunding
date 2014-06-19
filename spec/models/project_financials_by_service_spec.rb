@@ -4,7 +4,7 @@ describe ProjectFinancialsByService do
   subject { described_class.new(project) }
   let(:project) { create(:project, state: 'online') }
   before do
-    Configuration.stub(:[]).with(:platform_fee).and_return(0.1)
+    allow(Configuration).to receive(:[]).with(:platform_fee).and_return(0.1)
   end
 
   describe 'net amount' do

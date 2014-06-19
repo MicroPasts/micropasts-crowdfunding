@@ -4,7 +4,7 @@ describe MatchFinisher do
   include ActiveSupport::Testing::TimeHelpers
 
   before do
-    Neighborly::Balanced::Refund.any_instance.stub(:complete!)
+    allow_any_instance_of(Neighborly::Balanced::Refund).to receive(:complete!)
   end
 
   let(:match) do
@@ -16,7 +16,7 @@ describe MatchFinisher do
   describe 'completion' do
     it 'does a refund to appropriate matches' do
       refund = double('Neighborly::Balanced::Refund')
-      Neighborly::Balanced::Refund.stub(:new).with(match).and_return(refund)
+      allow(Neighborly::Balanced::Refund).to receive(:new).with(match).and_return(refund)
       expect(refund).to receive(:complete!).with(:match_automatic, anything)
       subject.complete!
     end
@@ -34,14 +34,14 @@ describe MatchFinisher do
     end
 
     it 'notifies observers' do
-      subject.stub(:matches).and_return([match])
+      allow(subject).to receive(:matches).and_return([match])
       expect(match).to receive(:notify_observers).with(:completed)
       subject.complete!
     end
 
     context 'with successful refund' do
       it 'completes match' do
-        subject.stub(:matches).and_return([match])
+        allow(subject).to receive(:matches).and_return([match])
         expect(match).to receive(:complete!)
         subject.complete!
       end
@@ -49,9 +49,9 @@ describe MatchFinisher do
 
     context 'with unsuccessful refund' do
       it 'ensures that match wasn\'t set as completed' do
-        Neighborly::Balanced::Refund.any_instance.stub(:complete!).
+        allow_any_instance_of(Neighborly::Balanced::Refund).to receive(:complete!).
           and_raise { Exception }
-        subject.stub(:matches).and_return([match])
+        allow(subject).to receive(:matches).and_return([match])
         expect(match).to_not receive(:complete!)
         subject.complete! rescue nil
       end

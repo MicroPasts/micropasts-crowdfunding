@@ -7,12 +7,12 @@ describe Users::AuthorizationsController do
   context 'Not authenticated' do
     before { delete :destroy, id: authorization.id, user_id: user }
     it { expect(response).to redirect_to(new_user_session_path) }
-    it { expect(-> { authorization.reload }).not_to raise_error(ActiveRecord::RecordNotFound) }
+    it { expect(-> { authorization.reload }).not_to raise_error }
   end
 
   context 'Authenticated' do
     before do
-      controller.stub(:current_user).and_return(user)
+      allow(controller).to receive(:current_user).and_return(user)
       delete :destroy, id: authorization.id, user_id: user
     end
 

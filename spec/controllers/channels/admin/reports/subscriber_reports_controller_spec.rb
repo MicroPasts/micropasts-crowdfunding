@@ -7,8 +7,8 @@ describe Channels::Admin::Reports::SubscriberReportsController do
 
   before do
     admin.channel = channel
-    controller.stub(:current_user).and_return(admin)
-    request.stub(:subdomain).and_return(channel.permalink)
+    allow(controller).to receive(:current_user).and_return(admin)
+    allow(request).to receive(:subdomain).and_return(channel.permalink)
   end
 
   describe "GET index" do

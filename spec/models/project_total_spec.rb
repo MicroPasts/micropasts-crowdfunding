@@ -3,7 +3,7 @@ require 'spec_helper'
 describe ProjectTotal do
   let!(:project) { create(:project) }
   before do
-    Configuration.stub(:[]).with(:platform_fee).and_return(0.1)
+    allow(Configuration).to receive(:[]).with(:platform_fee).and_return(0.1)
   end
   subject { ProjectTotal.new(project) }
 
@@ -36,7 +36,7 @@ describe ProjectTotal do
 
   describe 'net amount' do
     before do
-      Configuration.stub(:[]).with(:email_payments).and_return('books@neighbor.ly')
+      allow(Configuration).to receive(:[]).with(:email_payments).and_return('books@neighbor.ly')
     end
 
     context 'with payment service fees paid by project owner' do

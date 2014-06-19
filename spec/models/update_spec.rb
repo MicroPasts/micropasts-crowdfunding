@@ -25,7 +25,11 @@ describe Update do
 
   describe '.create' do
     subject{ create(:update, comment: "this is a comment\n") }
-    its(:comment_html){ should == "<p>this is a comment</p>\n" }
+
+    describe '#comment_html' do
+      subject { super().comment_html }
+      it { should == "<p>this is a comment</p>\n" }
+    end
   end
 
   describe '#email_comment_html' do
@@ -47,15 +51,15 @@ describe Update do
 
   describe '#notify_contributors' do
     before do
-      Notification.unstub(:notify)
-      Notification.unstub(:notify_once)
+      allow(Notification).to receive(:notify).and_call_original
+      allow(Notification).to receive(:notify_once).and_call_original
       @project = create(:project)
       contribution = create(:contribution, state: 'confirmed', project: @project)
       create(:contribution, state: 'confirmed', project: @project, user: contribution.user)
       @project.reload
       ActionMailer::Base.deliveries = []
       @update = Update.create!(user: @project.user, project: @project, title: "title", comment: "this is a comment\nhttp://vimeo.com/6944344\n![](http://catarse.me/assets/catarse/logo164x54.png)")
-      Notification.should_receive(:notify_once).with(
+      expect(Notification).to receive(:notify_once).with(
         :updates,
         contribution.user,
         {update_id: @update.id, user_id: contribution.user.id},

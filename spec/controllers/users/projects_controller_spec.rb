@@ -7,13 +7,17 @@ describe Users::ProjectsController do
   subject{ response }
 
   before do
-    controller.stub(:current_user).and_return(user)
+    allow(controller).to receive(:current_user).and_return(user)
   end
 
   describe "GET index" do
     before do
       get :index, { locale: :pt, user_id: project.user_id }
     end
-    its(:status){ should eq 200 }
+
+    describe '#status' do
+      subject { super().status }
+      it { should eq 200 }
+    end
   end
 end

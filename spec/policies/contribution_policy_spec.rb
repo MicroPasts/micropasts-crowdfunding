@@ -65,7 +65,7 @@ describe ContributionPolicy do
       context 'when user is admin' do
         let(:current_user) { create(:user, admin: true) }
 
-        it { expect(subject).to have(2).itens }
+        it { expect(subject.size).to eq(2) }
       end
 
       context 'when user is a contributor' do

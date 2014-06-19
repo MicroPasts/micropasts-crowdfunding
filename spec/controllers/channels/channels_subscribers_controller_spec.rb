@@ -8,8 +8,8 @@ describe Channels::ChannelsSubscribersController do
   let(:current_user){ user }
 
   before do
-    request.stub(:subdomain).and_return(channel.permalink)
-    controller.stub(:current_user).and_return(current_user)
+    allow(request).to receive(:subdomain).and_return(channel.permalink)
+    allow(controller).to receive(:current_user).and_return(current_user)
   end
 
   describe "GET show" do

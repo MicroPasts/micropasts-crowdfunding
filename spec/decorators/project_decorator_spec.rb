@@ -8,7 +8,7 @@ describe ProjectDecorator do
     let(:expires_at){ Time.zone.parse("23:00:00") }
     subject{ project.time_to_go }
     before do
-      project.stub(:expires_at).and_return(expires_at)
+      allow(project).to receive(:expires_at).and_return(expires_at)
     end
 
     context "when there is more than 1 day to go" do
@@ -43,7 +43,7 @@ describe ProjectDecorator do
     context "when we have an online_date" do
       let(:project){ create(:project, online_date: Time.now) }
       before do
-        I18n.should_receive(:l).with(project.expires_at.to_date)
+        expect(I18n).to receive(:l).with(project.expires_at.to_date)
       end
       it("should call I18n with date"){ subject }
     end
@@ -100,20 +100,20 @@ describe ProjectDecorator do
   describe "#display_progress" do
     subject{ project.display_progress }
     context "when progress is 0" do
-      before{ project.stub(:progress).and_return(0) }
+      before{ allow(project).to receive(:progress).and_return(0) }
       it{ should == 0 }
     end
     context "when progress is between 0 and 8" do
-      before{ project.stub(:progress).and_return(7) }
+      before{ allow(project).to receive(:progress).and_return(7) }
       it{ should == 8 }
     end
     context "when progress is between 8 and 100" do
-      before{ project.stub(:progress).and_return(70) }
+      before{ allow(project).to receive(:progress).and_return(70) }
       it{ should == 70 }
     end
     context "when progress is above 100" do
       before do
-        project.stub(:progress).and_return(101)
+        allow(project).to receive(:progress).and_return(101)
       end
       it{ should == 100 }
     end
@@ -123,33 +123,33 @@ describe ProjectDecorator do
     subject{ project.display_status }
     context "when online and reached goal" do
       before do
-        project.stub(:state).and_return('online')
-        project.stub(:reached_goal?).and_return(true)
+        allow(project).to receive(:state).and_return('online')
+        allow(project).to receive(:reached_goal?).and_return(true)
       end
       it{ should == 'reached_goal' }
     end
     context "when online and have not reached goal yet" do
       before do
-        project.stub(:state).and_return('online')
-        project.stub(:reached_goal?).and_return(false)
+        allow(project).to receive(:state).and_return('online')
+        allow(project).to receive(:reached_goal?).and_return(false)
       end
       it{ should == 'not_reached_goal' }
     end
     context "when failed" do
       before do
-        project.stub(:state).and_return('failed')
+        allow(project).to receive(:state).and_return('failed')
       end
       it{ should == 'failed' }
     end
     context "when successful" do
       before do
-        project.stub(:state).and_return('successful')
+        allow(project).to receive(:state).and_return('successful')
       end
       it{ should == 'successful' }
     end
     context "when waiting funds" do
       before do
-        project.stub(:state).and_return('waiting_funds')
+        allow(project).to receive(:state).and_return('waiting_funds')
       end
       it{ should == 'waiting_funds' }
     end
@@ -195,7 +195,7 @@ describe ProjectDecorator do
 
     context "When the project is successful" do
       it "should return a successful image flag when the project is successful" do
-        project.stub(:successful?).and_return(true)
+        allow(project).to receive(:successful?).and_return(true)
 
         expect(project.successful_flag).to eq('<div class="successful_flag"><img alt="Successful.en" src="/assets/successful.en.png" /></div>')
       end

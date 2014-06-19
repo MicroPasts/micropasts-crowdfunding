@@ -14,8 +14,8 @@ describe ContributionObserver do
   let(:confirmed_at)     { Time.now }
 
   before do
-    Notification.unstub(:notify)
-    Notification.unstub(:notify_once)
+    allow(Notification).to receive(:notify).and_call_original
+    allow(Notification).to receive(:notify_once).and_call_original
   end
 
   describe '#after_create' do
@@ -34,7 +34,7 @@ describe ContributionObserver do
       let(:project){ create(:project, state: 'failed', goal: 1000) }
 
       before do
-        project.stub(:project_total).and_return(
+        allow(project).to receive(:project_total).and_return(
           double('ProjectTotal', pledged: 1000.0, total_contributions: 1)
         )
         resource.project = project
@@ -66,8 +66,8 @@ describe ContributionObserver do
       let(:confirmed_at)   { nil }
 
       before do
-        Configuration.stub(:[]).and_return('finan@c.me')
-        resource.project.stub(:expires_at).and_return(8.days.ago)
+        allow(Configuration).to receive(:[]).and_return('finan@c.me')
+        allow(resource.project).to receive(:expires_at).and_return(8.days.ago)
       end
 
       it 'notifies backoffice about confirmation' do

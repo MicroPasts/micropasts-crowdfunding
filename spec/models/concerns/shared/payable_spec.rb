@@ -13,7 +13,7 @@ describe Shared::Payable do
     end
 
     describe '#define_key!' do
-      before { Kernel.stub(:rand).and_return(1) }
+      before { allow(Kernel).to receive(:rand).and_return(1) }
 
       it 'updates the resource key' do
         resource.define_key!
