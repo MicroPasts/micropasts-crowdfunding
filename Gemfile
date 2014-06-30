@@ -22,11 +22,6 @@ gem 'postgres-copy'
 gem 'pg_search'
 gem 'schema_plus'
 
-# Payment engines
-gem 'neighborly-balanced-creditcard',  github: 'neighborly/neighborly-balanced-creditcard',  branch: :master
-gem 'neighborly-balanced-bankaccount', github: 'neighborly/neighborly-balanced-bankaccount', branch: :master
-gem 'neighborly-balanced',             github: 'neighborly/neighborly-balanced',             branch: :master
-
 # Neigbhor.ly Engines
 gem 'neighborly-admin', github: 'neighborly/neighborly-admin', branch: :master
 gem 'neighborly-api', github: 'neighborly/neighborly-api', branch: :master

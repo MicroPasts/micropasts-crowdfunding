@@ -29,10 +29,6 @@ Neighborly::Application.routes.draw do
     mount Neighborly::Dashboard::Engine => '/dashboard/', as: :neighborly_dashboard
   end
 
-  mount Neighborly::Balanced::Creditcard::Engine => '/balanced/creditcard/', as: :neighborly_balanced_creditcard
-  mount Neighborly::Balanced::Bankaccount::Engine => '/balanced/bankaccount/', as: :neighborly_balanced_bankaccount
-  mount Neighborly::Balanced::Engine => '/balanced/', as: :neighborly_balanced
-
   # Non production routes
   if Rails.env.development?
     resources :emails, only: [ :index, :show ]
