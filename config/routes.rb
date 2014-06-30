@@ -29,6 +29,8 @@ Neighborly::Application.routes.draw do
     mount Neighborly::Dashboard::Engine => '/dashboard/', as: :neighborly_dashboard
   end
 
+  mount CatarsePaypalExpress::Engine => '/paypal_express', as: :catarse_paypal_express
+
   # Non production routes
   if Rails.env.development?
     resources :emails, only: [ :index, :show ]

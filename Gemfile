@@ -22,6 +22,9 @@ gem 'postgres-copy'
 gem 'pg_search'
 gem 'schema_plus'
 
+# Payment engines
+gem 'catarse_paypal_express', github: 'MicroPasts/catarse_paypal_express', branch: 'im-new-engine-interface'
+
 # Neigbhor.ly Engines
 gem 'neighborly-admin', github: 'neighborly/neighborly-admin', branch: :master
 gem 'neighborly-api', github: 'neighborly/neighborly-api', branch: :master
