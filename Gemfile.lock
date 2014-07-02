@@ -7,7 +7,7 @@ GIT
 
 GIT
   remote: git://github.com/MicroPasts/catarse_paypal_express.git
-  revision: da48d95a3e2635120a0b24703d2edfdd14b45bd7
+  revision: c936cbeca8e4accaf43f6eb1f6c4fca1aac74dbb
   specs:
     catarse_paypal_express (2.2.3)
       activemerchant (>= 1.34.0)
