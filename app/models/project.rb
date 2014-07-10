@@ -116,11 +116,6 @@ class Project < ActiveRecord::Base
     end
   end
 
-  def self.between_created_at(start_at, ends_at)
-    return all unless start_at.present? && ends_at.present?
-    where("created_at between to_date(?, 'dd/mm/yyyy') and to_date(?, 'dd/mm/yyyy')", start_at, ends_at)
-  end
-
   def subscribed_users
     User.subscribed_to_updates.subscribed_to_project(self.id)
   end
