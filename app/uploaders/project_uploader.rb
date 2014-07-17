@@ -2,8 +2,12 @@ class ProjectUploader < ImageUploader
   process convert: :jpg
 
   version :project_thumb do
-    process quality: 100
+    process quality: 70
     process resize_to_fill: [228, 178]
+  end
+
+  version :_2x, from_version: :project_thumb do
+    process quality: 100
   end
 
   version :project_thumb_large do

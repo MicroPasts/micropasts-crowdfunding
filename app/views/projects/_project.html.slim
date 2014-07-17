@@ -21,8 +21,10 @@
       .status-image
         = image_tag "coming_soon.#{I18n.locale}.png"
 
-    .cover[class="#{'large-8 medium-8 columns' if large} #{'large-6 medium-6 columns' if defined?(contribution) && !browser.mobile?} "]
-      = image_tag project.display_image(large || defined?(contribution) && !browser.mobile? ? 'project_thumb_large' : 'project_thumb'), itemprop: 'image'
+    .row
+      .cover.small-12.columns
+        - image_version = large || defined?(contribution) && !browser.mobile? ? 'project_thumb_large' : 'project_thumb'
+        = image_tag project.display_image(image_version), srcset: "#{project.display_image(:_2x)} 2x", itemprop: 'image'
 
     .content[class="#{'large-4 medium-4 columns' if large} #{'large-3 medium-3 columns' if defined?(contribution) && !browser.mobile?}"]
       - if large || defined?(contribution) && !browser.mobile?
