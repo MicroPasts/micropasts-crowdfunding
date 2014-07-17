@@ -20,11 +20,6 @@ describe ProjectUploader do
     it{ should have_dimensions(228, 178) }
   end
 
-  describe '#project_thumb_small' do
-    subject{ @uploader.project_thumb_small }
-    it{ should have_dimensions(85, 67) }
-  end
-
   describe '#project_thumb_facebook' do
     subject{ @uploader.project_thumb_facebook }
     it{ should have_dimensions(512, 400) }
