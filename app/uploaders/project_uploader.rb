@@ -6,13 +6,17 @@ class ProjectUploader < ImageUploader
     process resize_to_fill: [228, 178]
   end
 
-  version :_2x, from_version: :project_thumb do
+  version :project_thumb_2x, from_version: :project_thumb do
     process quality: 100
   end
 
   version :project_thumb_large do
-    process quality: 100
+    process quality: 70
     process resize_to_fill: [495, 335]
+  end
+
+  version :project_thumb_large_2x, from_version: :project_thumb_large do
+    process quality: 100
   end
 
   #facebook requires a minimum thumb size
