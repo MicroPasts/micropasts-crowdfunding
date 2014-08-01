@@ -41,8 +41,8 @@ en:
       user:
         bio: 'Short Bio'
         password: 'New Password'
-        newsletter: 'Receive occasional e-mail newsletters from Neighbor.ly'
-        new_project: 'Email me when new projects are added to Neighbor.ly'
+        newsletter: 'Receive occasional e-mail newsletters from MicroPasts'
+        new_project: 'Email me when new projects are added to MicroPasts'
         profile_type: 'Display me as a'
         phone_number: 'Phone number'
         location: 'City, State'
@@ -88,7 +88,7 @@ en:
           about: "Tell us the story of your project. What is it, why does it matter, and why should contributors care about it? Here is the place for details."
           category: "Which category best describes your project?"
           expires_at: "How long will your campaign run? Research shows a 'Goldilocks window' between 30 and 60 days."
-          goal: "What is the total goal for the project? Keep in mind Neighbor.ly's platform fee, and the cost to fulfill perks you offer. No commas, currency sign or decimal."
+          goal: "What is the total goal for the project? Keep in mind MicroPasts' platform fee, and the cost to fulfill perks you offer. No commas, currency sign or decimal."
           first_contributions: "Having contributors already in hand is critical to the success of your project. You can list contributions already received, or contributions you can count on to come in on day 1 of your project. If you have neither, explain who you plan to target with your campaign."
           headline: "In 130 characters or less, summarize your project. Why should contributors support it?"
           name: "Be concise and objective. 8 words or less."

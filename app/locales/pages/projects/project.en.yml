@@ -5,6 +5,6 @@ en:
       completed: 'Completed'
       soon: 'Coming Soon'
       share:
-        twitter-text: "Check out the project %{name} #%{hash_tag} that I support on @Neighborly"
+        twitter-text: "Check out the project %{name} #%{hash_tag} that I support on @micropasts"
         twitter: 'Tweet'
         facebook: 'Share'

@@ -10,7 +10,7 @@ en:
         new:
           no_reward: "No perks! I just want to help out the project!"
         create:
-          error: 'Oh noez! There was an error processing your contribution. Please try again.'
+          error: 'There was an error processing your contribution. Please try again.'
         credits_checkout:
           no_credits: "You don't have enough credits to help greenlight this project."
           success: "You successfully contributed using credits."
