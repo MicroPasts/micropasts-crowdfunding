@@ -7,6 +7,6 @@ en:
         match_progress: '%{pledged} so far of %{ceil}'
         load_more: 'Load More'
       contribution:
-        anonymous_contribution: "Anonymous neighbor"
-        no_reward: "This neighbor did not select a reward"
+        anonymous_contribution: "Anonymous contributor"
+        no_reward: "This contributor did not select a reward"
         matched_by: 'Matched by %{matchers}'

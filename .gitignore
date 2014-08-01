@@ -33,3 +33,4 @@ spec/tmp/
 
 # Secrets
 .env
+/nbproject/private/

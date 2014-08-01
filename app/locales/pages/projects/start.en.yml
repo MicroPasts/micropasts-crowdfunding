@@ -17,8 +17,8 @@ en:
         title: 'Who can run a campaign?'
         local-governments: 'Local Governments'
         nonprofits: 'Nonprofits'
-        neighborhood-organizations: 'Neighborhood Organizations'
-        description: "Community improvement shouldn't be limited to any one group or any one geography. Any US resident is welcome to propose a project on Neighbor.ly but campaigns must be owned by a local government, nonprofit, neighborhood organization or other non-governmental organization. This one, simple requirement helps to ensure that the projects you give to  handle your contributions responsibly."
+        neighborhood-organizations: 'Neighbourhood Organisations'
+        description: "Community improvement shouldn't be limited to any one group or any one geography. "
       work:
         title: 'A successful campaign takes some work.'
         subtitle: "Here's what you'll need:"

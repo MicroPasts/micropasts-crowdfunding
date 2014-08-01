@@ -5,17 +5,17 @@ en:
       anonymous_contribution: "Anonymous neighbor"
       subtitle:
         all_or_none: "A project in %{category_name}, in %{city}, by %{author}"
-        flexible: "A <span data-tooltip class='has-tip' title='Every Dollar Counts! <br /><br />In this type of campaign, the project is funded whether or not the goal is reached.'>flexible</span> %{category_name} project by %{author} in %{city}"
+        flexible: "A <span data-tooltip class='has-tip' title='Every pound Counts! <br /><br />In this type of campaign, the project is funded whether or not the goal is reached.'>flexible</span> %{category_name} project by %{author} in %{city}"
       status-bar:
         goal: 'Goal: %{value}'
-        total_contributions: '%{value} neighbors'
+        total_contributions: '%{value} contibutors'
         contribute: 'Contribute'
       tabs:
         about: 'About'
         updates: 'Updates'
         faqs: 'FAQs'
         comments: 'Comments'
-        contributions: 'Neighbors'
+        contributions: 'Contributors'
         budget: 'Budget'
         terms: 'Terms'
         reports: 'Reports'
@@ -39,14 +39,14 @@ en:
       edit: 'Edit campaign'
       share:
         title: 'Get your friends involved'
-      no-neighbors: "No neighbors yet. Be the first!"
+      no-neighbors: "No contributors yet. Be the first!"
       author:
         about: 'About %{name}'
       in_partnership_with: 'In Partnership With'
     video_embed:
       a_project_by_html: "A project by %{link} on"
     share:
-      twitter-text: "Check out the project %{name} #%{hash_tag} on @Neighborly: %{project_url}"
+      twitter-text: "Check out the project %{name} #%{hash_tag} on @micropasts: %{project_url}"
       twitter: 'Tweet'
       facebook: 'Share'
       email: 'Email'

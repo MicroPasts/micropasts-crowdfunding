@@ -7,7 +7,7 @@ en:
           menu: 'Dashboard'
           total_projects:
             title: 'Total Projects'
-            hint: 'Number of Projects on Plataform'
+            hint: 'Number of Projects on Platform'
           total_subscribers:
             title: 'Total Followers'
       management:

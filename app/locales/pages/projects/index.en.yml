@@ -10,13 +10,13 @@ en:
       coming_soon: 'Coming Soon'
       with_active_matches: 'Active Matches'
       join:
-        join_the_neighborhood: 'Join the Neighborhood'
+        join_the_neighborhood: 'Join the MicroPasts community'
         already_joined: 'Already joined? %{link}.'
         sign_in: 'Sign in'
       hero:
         title: 'Invest in the places you care about.'
-        subtitle_html: "Howdy, Neighbor! Exciting things happening here at Neighbor.ly. For two years, we've been developing a way that will make it easy and fun to <span>invest</span> in communities. Curious about what's next? Sign up below and be among the first to know."
-        email_placeholder: 'YOUR EMAIL'
+        subtitle_html: "Welcome! Exciting things happening for MicroPasts. Curious about what's next? Sign up below and be among the first to know."
+        email_placeholder: 'Your email'
         submit: 'Submit'
       start-one:
         title: 'Have a community project in need of funding?'

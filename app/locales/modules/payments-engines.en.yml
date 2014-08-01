@@ -2,9 +2,9 @@ en:
   payments:
     common:
       terms: 'By contributing to this project I agree with the %{link}.'
-      terms-link: 'Terms & Conditions of Use'
+      terms-link: 'Terms and Conditions of Use'
       confirm: 'Confirm payment'
       proccessing: 'Processing...'
       error:
-        title: "Sorry, something must've gone wrong."
+        title: "Sorry, something has gone wrong."
         name: 'Please reload this page and try again.'

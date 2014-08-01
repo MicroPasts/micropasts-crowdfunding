@@ -23,9 +23,10 @@ gem 'pg_search'
 gem 'schema_plus'
 
 # Payment engines
-gem 'neighborly-balanced-creditcard',  github: 'neighborly/neighborly-balanced-creditcard',  branch: :master
-gem 'neighborly-balanced-bankaccount', github: 'neighborly/neighborly-balanced-bankaccount', branch: :master
-gem 'neighborly-balanced',             github: 'neighborly/neighborly-balanced',             branch: :master
+#gem 'neighborly-balanced-creditcard',  github: 'neighborly/neighborly-balanced-creditcard',  branch: :master
+#gem 'neighborly-balanced-bankaccount', github: 'neighborly/neighborly-balanced-bankaccount', branch: :master
+#gem 'neighborly-balanced',             github: 'neighborly/neighborly-balanced',             branch: :master
+gem 'catarse_paypal_express',          github: 'MicroPasts/catarse_paypal_express',          branch: :master
 
 # Neigbhor.ly Engines
 gem 'neighborly-admin', github: 'neighborly/neighborly-admin', branch: :master
@@ -60,6 +61,7 @@ gem 'catarse_monkeymail', '~> 0.1.6'
 gem 'simple_form', '~> 3.0.2'
 gem 'auto_html', '~> 1.6.1'
 gem 'kaminari'
+gem 'font-awesome-sass'
 
 # Uploads
 gem 'carrierwave', '~> 0.9.0'

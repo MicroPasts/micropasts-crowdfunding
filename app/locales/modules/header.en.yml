@@ -1,10 +1,10 @@
 en:
   layouts:
     header:
-      start_campaign: 'Start A Campaign'
+      start_campaign: 'Start a campaign'
       discover: 'Discover'
       about: 'Learn'
       sign-out: 'Log out'
-      sign-up: 'Join'
+      sign-up: 'Join us'
       sign-in: 'Log in'
 
