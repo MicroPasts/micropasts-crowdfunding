@@ -58,7 +58,7 @@ gem 'catarse_monkeymail', '~> 0.1.4'
 gem 'simple_form', '~> 3.0.2'
 gem 'auto_html', '~> 1.6.1'
 gem 'kaminari'
-gem 'font-awesome-sass'
+# gem 'font-awesome-sass'
 
 # Uploads
 gem 'carrierwave', '~> 0.9.0'
