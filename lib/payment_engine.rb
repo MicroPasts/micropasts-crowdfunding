@@ -20,7 +20,10 @@ class PaymentEngine
     end
 
     def create_payment_notification(attributes)
-      PaymentNotification.create!(attributes)
+      notification_attributes = attributes.fetch(:resource_id).merge(
+        extra_data: attributes[:extra_data],
+      ).compact.symbolize_keys
+      PaymentNotification.create!(notification_attributes)
     end
 
     def configuration

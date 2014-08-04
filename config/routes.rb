@@ -31,9 +31,7 @@ Neighborly::Application.routes.draw do
     mount Neighborly::Dashboard::Engine => '/dashboard/', as: :neighborly_dashboard
   end
 
-  mount Neighborly::Balanced::Creditcard::Engine => '/balanced/creditcard/', as: :neighborly_balanced_creditcard
-  mount Neighborly::Balanced::Bankaccount::Engine => '/balanced/bankaccount/', as: :neighborly_balanced_bankaccount
-  mount Neighborly::Balanced::Engine => '/balanced/', as: :neighborly_balanced
+  mount CatarsePaypalExpress::Engine => '/paypal_express', as: :catarse_paypal_express
 
   # Non production routes
   if Rails.env.development?
@@ -41,7 +39,7 @@ Neighborly::Application.routes.draw do
   end
 
   # Channels
-  constraints subdomain: /^(?!www|secure|test|local|staging|neighborly|neighborly-staging|crowdfunded)(\w+)/ do
+  constraints subdomain: /^(?!www|secure|test|local|staging|neighborly|neighborly-staging|crowdfunded|micropasts-crowdfunding)(\w+)/ do
     namespace :channels, path: '' do
       get '/', to: 'profiles#show', as: :profile
       resources :channels_subscribers, only: [:index, :create, :destroy]

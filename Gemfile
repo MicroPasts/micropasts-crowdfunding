@@ -23,10 +23,7 @@ gem 'pg_search'
 gem 'schema_plus'
 
 # Payment engines
-#gem 'neighborly-balanced-creditcard',  github: 'neighborly/neighborly-balanced-creditcard',  branch: :master
-#gem 'neighborly-balanced-bankaccount', github: 'neighborly/neighborly-balanced-bankaccount', branch: :master
-#gem 'neighborly-balanced',             github: 'neighborly/neighborly-balanced',             branch: :master
-gem 'catarse_paypal_express',          github: 'MicroPasts/catarse_paypal_express',          branch: :master
+gem 'catarse_paypal_express', github: 'MicroPasts/catarse_paypal_express'
 
 # Neigbhor.ly Engines
 gem 'neighborly-admin', github: 'neighborly/neighborly-admin', branch: :master

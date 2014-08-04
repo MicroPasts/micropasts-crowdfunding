@@ -30,13 +30,20 @@ describe PaymentEngine do
   end
 
   describe '.create_payment_notification' do
-    subject do
-      PaymentEngine.create_payment_notification({ contribution_id: contribution.id,
-                                                  extra_data: { test: true } })
+    it 'should create payment notification' do
+      notification = PaymentEngine.create_payment_notification(
+        resource_id: { contribution_id: contribution.id },
+        extra_data:  { test: true }
+      )
+      expect(notification).to eql(PaymentNotification.where(contribution_id: contribution.id).first)
     end
 
-    it 'should create payment notification' do
-      should == PaymentNotification.where(contribution_id: contribution.id).first
+    it 'prevents errors when trying to create notifications with string keys' do
+      notification = PaymentEngine.create_payment_notification(
+        resource_id: { 'contribution_id' => contribution.id },
+        extra_data:  { test: true }
+      )
+      expect(notification).to eql(PaymentNotification.where(contribution_id: contribution.id).first)
     end
   end
 

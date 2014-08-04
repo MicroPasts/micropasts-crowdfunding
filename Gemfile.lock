@@ -6,6 +6,15 @@ GIT
     as_csv (1.0.2)
 
 GIT
+  remote: git://github.com/MicroPasts/catarse_paypal_express.git
+  revision: c936cbeca8e4accaf43f6eb1f6c4fca1aac74dbb
+  specs:
+    catarse_paypal_express (2.2.3)
+      activemerchant (>= 1.34.0)
+      rails (~> 4.0)
+      slim-rails
+
+GIT
   remote: git://github.com/bernat/best_in_place.git
   revision: 366413be357d65cdf47031e928aea969f72e3659
   branch: rails-4
@@ -49,39 +58,6 @@ GIT
       rails (~> 4.0)
 
 GIT
-  remote: git://github.com/neighborly/neighborly-balanced-bankaccount.git
-  revision: 0d780a5056b39e3dc7fd4706125fc92a12c0b6cb
-  branch: master
-  specs:
-    neighborly-balanced-bankaccount (1.0.0)
-      neighborly-balanced (~> 1.1)
-      rails (~> 4.0)
-      sidekiq (~> 2.0)
-      slim (~> 2.0)
-
-GIT
-  remote: git://github.com/neighborly/neighborly-balanced-creditcard.git
-  revision: 04caefe1858b37ab07c8980be8e67dc5df826da2
-  branch: master
-  specs:
-    neighborly-balanced-creditcard (1.1.0)
-      neighborly-balanced (~> 1.1)
-      rails (~> 4.0)
-      slim (~> 2.0)
-
-GIT
-  remote: git://github.com/neighborly/neighborly-balanced.git
-  revision: 6d4d887cbfde8a6c8e303ea02162923820baa127
-  branch: master
-  specs:
-    neighborly-balanced (1.1.0)
-      balanced (~> 0.8.0)
-      draper (~> 1.3)
-      faraday (= 0.8.9)
-      faraday_middleware (= 0.9.0)
-      rails (~> 4.0)
-
-GIT
   remote: git://github.com/neighborly/neighborly-dashboard.git
   revision: 1d37b04a9c88e346962aa3531e1d12889ef8d942
   branch: master
@@ -113,6 +89,17 @@ GEM
       erubis (~> 2.7.0)
     active_model_serializers (0.8.1)
       activemodel (>= 3.0)
+    active_utils (2.2.1)
+      activesupport (>= 2.3.11)
+      i18n
+    activemerchant (1.43.1)
+      active_utils (~> 2.0, >= 2.0.1)
+      activesupport (>= 2.3.14, < 5.0.0)
+      builder (>= 2.1.2, < 4.0.0)
+      i18n (~> 0.5)
+      json (~> 1.7)
+      money (< 7.0.0)
+      nokogiri (~> 1.4)
     activemodel (4.1.4)
       activesupport (= 4.1.4)
       builder (~> 3.1)
@@ -132,9 +119,6 @@ GEM
       redcarpet (~> 3.1)
       rinku (~> 1.5.0)
     awesome_print (1.2.0)
-    balanced (0.8.2)
-      faraday (~> 0.8.6)
-      faraday_middleware (~> 0.9.0)
     barber (0.4.2)
       ember-source
       execjs
@@ -241,8 +225,6 @@ GEM
     fakeweb (1.3.0)
     faraday (0.8.9)
       multipart-post (~> 1.2.0)
-    faraday_middleware (0.9.0)
-      faraday (>= 0.7.4, < 0.9)
     ffaker (1.24.0)
     fog (1.21.0)
       fog-brightbox
@@ -307,8 +289,10 @@ GEM
       json (>= 1.7.7)
     method_source (0.8.2)
     mime-types (1.25.1)
-    mini_portile (0.5.3)
+    mini_portile (0.6.0)
     minitest (5.3.5)
+    money (6.1.1)
+      i18n (~> 0.6.4)
     multi_json (1.10.1)
     multi_xml (0.5.5)
     multipart-post (1.2.0)
@@ -316,8 +300,8 @@ GEM
       net-ssh (>= 2.6.5)
     net-ssh (2.8.0)
     newrelic_rpm (3.6.9.171)
-    nokogiri (1.6.1)
-      mini_portile (~> 0.5.0)
+    nokogiri (1.6.2.1)
+      mini_portile (= 0.6.0)
     nprogress-rails (0.1.2.3)
     oauth (0.4.7)
     oauth2 (0.9.3)
@@ -458,7 +442,7 @@ GEM
     slim (2.0.2)
       temple (~> 0.6.6)
       tilt (>= 1.3.3, < 2.1)
-    slim-rails (2.1.4)
+    slim-rails (2.1.5)
       actionpack (>= 3.0, < 4.2)
       activesupport (>= 3.0, < 4.2)
       railties (>= 3.0, < 4.2)
@@ -534,7 +518,8 @@ DEPENDENCIES
   capybara (~> 2.2.1)
   capybara-webkit
   carrierwave (~> 0.9.0)
-  catarse_monkeymail (~> 0.1.6)
+  catarse_monkeymail (~> 0.1.4)
+  catarse_paypal_express
   coffee-rails (~> 4.0.1)
   coveralls
   database_cleaner
@@ -563,9 +548,6 @@ DEPENDENCIES
   minitest
   neighborly-admin!
   neighborly-api!
-  neighborly-balanced!
-  neighborly-balanced-bankaccount!
-  neighborly-balanced-creditcard!
   neighborly-dashboard!
   newrelic_rpm (= 3.6.9.171)
   nprogress-rails
