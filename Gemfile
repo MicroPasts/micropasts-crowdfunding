@@ -23,7 +23,7 @@ gem 'pg_search'
 gem 'schema_plus'
 
 # Payment engines
-gem 'catarse_paypal_express', github: 'MicroPasts/catarse_paypal_express’, branch: :master
+gem 'catarse_paypal_express', github: 'MicroPasts/catarse_paypal_express', branch: :master
 
 # Neigbhor.ly Engines
 gem 'neighborly-admin', github: 'neighborly/neighborly-admin', branch: :master
