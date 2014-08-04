@@ -8,6 +8,7 @@ GIT
 GIT
   remote: git://github.com/MicroPasts/catarse_paypal_express.git
   revision: c936cbeca8e4accaf43f6eb1f6c4fca1aac74dbb
+  branch: master
   specs:
     catarse_paypal_express (2.2.3)
       activemerchant (>= 1.34.0)
@@ -151,7 +152,7 @@ GEM
       activemodel (>= 3.2.0)
       activesupport (>= 3.2.0)
       json (>= 1.7)
-    catarse_monkeymail (0.1.6)
+    catarse_monkeymail (0.1.4)
       mailchimp-api (~> 2.0.4)
       rails (>= 4.0.3)
       rails-observers
@@ -519,7 +520,7 @@ DEPENDENCIES
   capybara-webkit
   carrierwave (~> 0.9.0)
   catarse_monkeymail (~> 0.1.4)
-  catarse_paypal_express
+  catarse_paypal_express!
   coffee-rails (~> 4.0.1)
   coveralls
   database_cleaner

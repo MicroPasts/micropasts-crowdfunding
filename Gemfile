@@ -23,7 +23,7 @@ gem 'pg_search'
 gem 'schema_plus'
 
 # Payment engines
-gem 'catarse_paypal_express', github: 'MicroPasts/catarse_paypal_express'
+gem 'catarse_paypal_express', github: 'MicroPasts/catarse_paypal_express’, branch: :master
 
 # Neigbhor.ly Engines
 gem 'neighborly-admin', github: 'neighborly/neighborly-admin', branch: :master
@@ -52,7 +52,7 @@ gem 'ezcrypto'
 gem 'pundit', '~> 0.2.3'
 
 # Email marketing
-gem 'catarse_monkeymail', '~> 0.1.6'
+gem 'catarse_monkeymail', '~> 0.1.4’
 
 # HTML manipulation and formatting
 gem 'simple_form', '~> 3.0.2'
