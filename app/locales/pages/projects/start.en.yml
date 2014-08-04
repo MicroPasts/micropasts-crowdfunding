@@ -16,7 +16,7 @@ en:
       who:
         title: 'Who can run a campaign?'
         local-governments: 'Local Governments'
-        nonprofits: 'Nonprofits'
+        nonprofits: 'Non-profits'
         neighborhood-organizations: 'Neighbourhood Organisations'
         description: "Community improvement shouldn't be limited to any one group or any one geography. "
       work:
@@ -36,7 +36,7 @@ en:
           description: 'Explain your project in detail. The more users know about your project and how you plan to use their money, the more likely they are to contribute.'
         rewards:
           title: 'Compelling Rewards'
-          description: 'Incentivize contributors further by offering rewards as icing on the cake.'
+          description: 'Incentivise contributors further by offering rewards as icing on the cake.'
         engagement:
           title: 'Continual Engagement'
           description: 'Stay connected with your current supporters while spreading the message to new one. Engagement is key to a successful campaign.'

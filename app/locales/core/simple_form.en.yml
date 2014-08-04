@@ -48,7 +48,7 @@ en:
         location: 'City, State'
         address_street: 'Street Address'
         address_neighborhood: 'Neighborhood Name'
-        address_zip_code: 'Zip code'
+        address_zip_code: 'Postal or Zip code'
         other_url: 'Your website'
         update_address: "Update my address on my profile."
       project:
@@ -59,7 +59,7 @@ en:
         permalink: 'Permalink'
         goal: 'Project Budget'
         headline: 'Summary'
-        about: 'The Story'
+        about: 'The story behind your project'
         expires_at: 'Duration'
         online_days: 'Duration'
         video_url: 'Video'
@@ -68,7 +68,7 @@ en:
         site: 'Website'
         hash_tag: 'Hashtag'
         foundation_widget: 'Use new foundation widget?'
-        address_neighborhood: 'Neighborhood Name'
+        address_neighborhood: 'Neighbourhood Name'
         location: 'City, State'
         address_city: 'City'
         address_state: 'State'
@@ -88,7 +88,7 @@ en:
           about: "Tell us the story of your project. What is it, why does it matter, and why should contributors care about it? Here is the place for details."
           category: "Which category best describes your project?"
           expires_at: "How long will your campaign run? Research shows a 'Goldilocks window' between 30 and 60 days."
-          goal: "What is the total goal for the project? Keep in mind MicroPasts' platform fee, and the cost to fulfill perks you offer. No commas, currency sign or decimal."
+          goal: "What is the total goal for the project? Keep in mind MicroPasts' platform fee, and the cost to fulfill rewards that you offer. No commas, currency sign or decimal."
           first_contributions: "Having contributors already in hand is critical to the success of your project. You can list contributions already received, or contributions you can count on to come in on day 1 of your project. If you have neither, explain who you plan to target with your campaign."
           headline: "In 130 characters or less, summarize your project. Why should contributors support it?"
           name: "Be concise and objective. 8 words or less."

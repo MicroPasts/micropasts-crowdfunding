@@ -24,13 +24,13 @@ en:
           title: 'Project Goal'
           description: 'How much do you need to raise in order to complete your project? Please enter a number without commas.'
         location:
-          title: 'City, State'
-          description: 'In what city is your project based?'
+          title: 'City or locality'
+          description: 'Where is your project based?'
         headline:
           title: 'Summary'
           description: 'Describe your project in 140 characters.'
         about:
-          title: 'The Story'
+          title: 'The story behind your project'
           description: "Tell us what you can about your project. Why do you need the community's help?"
         organization_type:
           title: 'Organisation Type'

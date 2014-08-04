@@ -12,7 +12,7 @@ en:
           labels:
             show_password: 'Show password'
           hint:
-            password_length: '*must be at least 6 characters.'
+            password_length: '* must be at least 6 characters.'
           inputs:
             submit: 'Join the MicroPasts community'
             facebook: 'Sign up with Facebook'
