@@ -92,54 +92,24 @@
         header.title-information.text-center.row
           .row
             .small-12.columns
-              h2 Meet the team
+              h2 Meet the MicroPasts team
         .row
           .small-12.columns
-            p We're a passionate team of civic geeks, fundraisers, planners, finance folks, techies & entrepreneurs. Our mission is to help communities help themselves. We love our country and the thousands of communities that make it.
+            p Our team is based at the Institute of Archaeology, University College London and the British Museum. We are trying to enable crowd-funding for the heritage sector. 
 
         .team-members
-          = render 'team_member', nickname: :jase, name: 'Jase Wilson', role: 'CEO',
-            description: 'MIT grad blessed with ADHD. Obsessed with cities and the people who shape & are shaped by them.',
-            social_networks: { linkedin: 'http://linkedin.com/in/luminopolis', twitter: 'http://twitter.com/luminopolis' }
-          = render 'team_member', nickname: :patrick, name: 'Patrick Hosty', role: 'COO',
-            description: 'Bond trader with deep experience in public finance. Philanthropist.',
-            social_networks: { linkedin: 'http://linkedin.com/in/hosty', twitter: 'http://twitter.com/hosty' }
-          = render 'team_member', nickname: :sean, name: 'Sean Connolly', role: 'CMO',
-            description: 'Master story teller. City planning and design.',
-            social_networks: { linkedin: 'http://linkedin.com/pub/sean-connolly/29/7b3/3b7', twitter: 'http://twitter.com/snconnolly' }
-          = render 'team_member', nickname: :chris, name: 'Chris Parrott', role: 'CFO',
-            description: 'CPA with deep local gov experience. Innovative financial modeling.',
-            social_networks: { linkedin: 'http://linkedin.com/pub/christopher-parrott/b/23/780', twitter: 'http://twitter.com/cm_parrott' }
-          = render 'team_member', nickname: :sarah, name: 'Sarah Shipley', role: 'Development Director',
-            description: 'Decorated communications consultant &amp; fundraiser in love with all things civic.',
-            social_networks: { linkedin: 'http://linkedin.com/pub/sarah-shipley/41/148/329', twitter: 'http://twitter.com/shipleycom' }
-          = render 'team_member', nickname: :josemar, name: 'Josemar Luedke', role: 'Lead Developer',
-            description: 'Rails Jedi. Addicted to open source.',
-            social_networks: { linkedin: 'http://br.linkedin.com/in/josemarluedke', twitter: 'http://twitter.com/JosemarLuedke', github: 'https://github.com/josemarluedke' }
-          = render 'team_member', nickname: :briston, name: 'Briston Davidge', role: 'Product Director',
-            description: 'Seasoned web developer. Makes functional, forward thinking things for the internet.',
-            social_networks: { linkedin: 'http://linkedin.com/in/bristondavidge', twitter: 'http://twitter.com/BristonDavidge' }
-          = render 'team_member', nickname: :irio, name: 'Irio Musskopf', role: 'Developer',
-            description: 'Seeker of simple solutions. Student of maths. Building MicroPasts to make people happier.',
-            social_networks: { linkedin: 'http://linkedin.com/in/iriomk', twitter: 'https://twitter.com/irio', github: 'https://github.com/irio' }
-          = render 'team_member', nickname: :lesa, name: 'Lesa Mitchell', role: 'Advisor',
-            description: 'Founder of Network for Scale. Former Kauffman Fdn VP. Author. Super connector.',
-            social_networks: { linkedin: 'http://linkedin.com/in/lesamitchell', twitter: 'https://twitter.com/lesamitchell' }
-          = render 'team_member', nickname: :seth, name: 'Seth Friedman', role: 'Advisor',
-            description: 'Brand-focused, digitally-fluent strategist. Madison Avenue ad agency vet.',
-            social_networks: { linkedin: 'http://linkedin.com/pub/seth-friedman/2/364/bab', twitter: 'http://twitter.com/sethrf' }
-          = render 'team_member', nickname: :christine, name: 'Christine Outram', role: 'Advisor',
-            description: 'Inventionist at DeutschLA. Design-driven, award winning tech geek.',
-            social_networks: { linkedin: 'http://linkedin.com/in/christineoutram', twitter: 'http://twitter.com/CityInnovation' }
-          = render 'team_member', nickname: :robert, name: 'Robert Litan', role: 'Advisor',
-            description: 'Former Director of Research, Bloomberg Government. Economist, author, lawyer.',
-            social_networks: { twitter: 'http://twitter.com/BobLitan' }
-          = render 'team_member', nickname: :brett, name: 'Brett Hudson', role: 'Advisor',
-            description: 'Social entrepreneur with deep startup experience. Stanford Public Policy honors grad.',
-            social_networks: { linkedin: 'http://br.linkedin.com/pub/brett-hudson/4/491/a30', twitter: 'http://twitter.com/BrettJHudson' }
-          = render 'team_member', nickname: :luke, name: 'Luke Norris', role: 'Advisor',
-            description: 'Director of Government Relations at Code for America. Growth strategist from startups to Fortune 500\'s.',
-            social_networks: { linkedin: 'http://linkedin.com/in/lukednorris', twitter: 'http://twitter.com/norrisluke' }
+          = render 'team_member', nickname: :andy, name: 'Andy Bevan', role: 'Principal Investigator',
+            description: 'A UCL archaeologist, lecturer and nominal lead for this project. Andy has interests in spatial and computational modelling landscape archaeology and artefact studies. He sees MicroPasts as a great chance to play with different kinds of archaeology, conspire about new research projects, and tinker with fun bits of technology.',
+            social_networks: { github: 'https://github.com/ahb108' }
+          = render 'team_member', nickname: :daniel, name: 'Daniel Pett', role: 'Co-Investigator',
+            description: 'ICT advisor at the British Museum,, UK. Daniel has configured most of the technology for this project and works for the Portable Antiquities Scheme.',
+            social_networks: { linkedin: 'http://linkedin.com/in/danielpett', twitter: 'http://twitter.com/portableant', github: 'https://github.com/portableant' }
+          = render 'team_member', nickname: :adi, name: 'Adi Keinan-Schoonbaert', role: 'Research Associate',
+            description: 'A researcher and archaeologist at UCL, Adi specialises in archaeological databases, documentation, GIS and heritagemanagement. She's interested in applying her technical and digital experience to develop and maintain this project's platform.',
+            social_networks: { linkedin: 'http://www.linkedin.com/pub/adi-keinan-schoonbaert/5b/4a0/95', twitter: 'https://twitter.com/adikeinan', github: 'https://github.com/adikeinan' }
+          = render 'team_member', nickname: :chiara, name: 'Chiara Bonacchi', role: 'Research Associate',
+            description: 'A UCL researcher in Public Archaeology and Deputy Director of the Centre for Audio-Visual Study and Practice in Archaeology. Chiara has experience researching public engagement with the past and digital cultural engagement. In this project, she is responsible for evaluating the effectiveness of the crowd-funding platform, besides helping with its day-to-day management.',
+            social_networks: { linkedin: 'http://www.linkedin.com/pub/chiara-bonacchi/49/a35/b79', twitter: 'http://twitter.com/Chiara_Bonacchi', github: 'https://github.com/ChiaraBonacchi' }
 
   section#supporters.main-section.full-width-row
     .row
@@ -149,35 +119,25 @@
             h2 Our supporters
         .row
           .small-12.columns
-            strong.subtitle We have some amazing friends
+            strong.subtitle We have some amazing support and funding from some great institutions.
 
       ul
         li.supporter.small-6.medium-3.columns
-          = image_tag 'learn/knight.png', alt: 'Knight Foundation\'s logo', title: '2013 Knight Foundation Grantee'
+          = image_tag 'about/AHRClogo.png', alt: 'The AHRC logo', title: 'An AHRC funded project'
           strong
-            span @KnightFdn
-            span Backed
+            span AHRC
         li.supporter.small-6.medium-3.columns
-          = image_tag 'learn/civicx.png', alt: 'The Points of Light Civic Accelerator\'s logo',  title: 'CivicX'
+          = image_tag 'about/ucl-home_trans_small.png', alt: 'UCL logo',  title: 'University College London'
           strong
-            span #CivicX
-            span Accelerated
+            span UCL
         li.supporter.small-6.medium-3.columns
-          = image_tag 'learn/tumml.png', alt: 'Tumml\'s logo',  title: 'TUMML'
+          = image_tag 'about/bm_logo.pmg', alt: 'British Museum logo',  title: 'The British Museum'
           strong
-            span @TUMML
-            span Amplified
+            span The British Museum
         li.supporter.small-6.medium-3.columns
-          = image_tag 'learn/madeinkcsf.png', alt: 'US map with hearts in Kansas City and San Francisco',  title: 'Made in KC and SF'
+          = image_tag 'powered_by_neighborly.png', alt: 'Neighbor.ly', title: 'Powered by Neighbor.ly'
           strong
-            span Made in @KCMO &amp;
-            span San Francisco
-    .angel-list.row
-      .small-12.medium-offset-3.medium-6.column.text-center
-        = link_to 'https://angel.co/neighborly' do
-          strong.important-notice
-            | Find us on
-            = image_tag 'learn/angel_list.png', alt: 'Angel List\'s logo', title: 'Angel List', class: 'angel-list-logo'
+            span Powered by Neighbor.ly
 
   section#open.main-section.full-width-row
     .row
@@ -185,19 +145,11 @@
         header.title-information.text-center.row
           .row
             .small-12.columns
-              h2 Yes, we're open
+              h2 Committed to open
           .row
             .small-12.columns
-              strong.subtitle Open company, clear mission
+              strong.subtitle Open Source, Open Data, Open Access
       .open-type.small-12.medium-4.columns.text-center
         .open-type-image
           = image_tag 'learn/github.png', alt: 'GitHub\'s logo', title: 'GitHub', class: 'github-logo'
         strong.important-notice Open Source
-      .open-type.small-12.medium-4.columns.text-center
-        .open-type-image
-          = image_tag 'learn/sunlight_foundation.png', alt: 'Sunlight Foundation\'s logo', title: 'Sunlight Foundation', class: 'sunlight-foundation-logo'
-        strong.important-notice Open Data
-      .open-type.small-12.medium-4.columns.text-center
-        .open-type-image
-          = image_tag 'learn/open_company.png', alt: 'Open Company Initiative\'s logo', title: 'The Open Company Initiative', class: 'open-company-logo'
-        strong.important-notice Open Company

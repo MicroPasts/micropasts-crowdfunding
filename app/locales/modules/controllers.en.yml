@@ -8,7 +8,7 @@ en:
     projects:
       contributions:
         new:
-          no_reward: "No perks! I just want to help out the project!"
+          no_reward: "No rewards please! I just want to help out the project!"
         create:
           error: 'There was an error processing your contribution. Please try again.'
         credits_checkout:
