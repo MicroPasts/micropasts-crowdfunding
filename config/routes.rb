@@ -29,6 +29,7 @@ Neighborly::Application.routes.draw do
   end
 
   mount CatarsePaypalExpress::Engine => '/paypal_express', as: :catarse_paypal_express
+  mount Neighborly::Dashboard::Engine => '/dashboard/', as: :neighborly_dashboard
   mount Neighborly::Api::Engine => '/api/', as: :neighborly_api
 
   # Non production routes
