@@ -3,14 +3,12 @@ en:
     footer:
       quick_links: 'About the project'
       about: 'Project team'
-      discover: 'Find Projects'
+      discover: 'Find projects'
       start_campaign: 'Submit a project'
-      how_it_works: 'How It Works'
-      contact: 'Contact Us'
+      how_it_works: 'How it works'
+      contact: 'Contact us'
       faq: 'FAQ / Help'
-      legal: 'Privacy Policy'
-      terms: 'Terms of Use'
+      legal: 'Privacy policy'
+      terms: 'Terms of use'
       stay_in_touch: 'Become a Micropasts member?'
-      built_with_love: 'An <a href="http://www.ahrc.ac.uk/">AHRC funded project</a> | Built on top of the <a href="http://github.com/luminopolis/neighborly">Neighborly project</a> and the original <a href="http://github.com/catarse/catarse">Catarse from Brazil</a> | <a href="http://github.com/findsorguk/MicroPasts">Open source and on Github</a>'
-
-
+      built_with_love: 'An <a href="http://www.ahrc.ac.uk/">AHRC funded project</a> | <a href="http://github.com/micropasts/">Open source and on Github</a>'
