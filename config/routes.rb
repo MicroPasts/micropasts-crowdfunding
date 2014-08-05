@@ -26,12 +26,10 @@ Neighborly::Application.routes.draw do
   # Mountable engines
   constraints check_user_admin do
     mount Sidekiq::Web => '/sidekiq'
-
-    mount Neighborly::Api::Engine => '/api/', as: :neighborly_api
-    mount Neighborly::Dashboard::Engine => '/dashboard/', as: :neighborly_dashboard
   end
 
   mount CatarsePaypalExpress::Engine => '/paypal_express', as: :catarse_paypal_express
+  mount Neighborly::Api::Engine => '/api/', as: :neighborly_api
 
   # Non production routes
   if Rails.env.development?
