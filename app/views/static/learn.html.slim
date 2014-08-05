@@ -9,7 +9,7 @@
             h2 Learn how it works
         .row
           .small-12.columns
-            strong.subtitle Fund community projects
+            strong.subtitle Funding archaeological research 
       .row
         .small-12.columns
           = link_to '#how-it-works', class: 'expand-section' do
@@ -20,7 +20,7 @@
       .row
         .small-12.columns
           p
-            | <strong>MicroPasts'</strong> mission is to connect communities with new funding sources and citizens with the community projects they care about.
+            | MicroPasts helps connect people with research projects about archaeology, history and heritage that they can help fund.
       .row.text-center
         .medium-6.columns
           h3 For communities
@@ -30,61 +30,6 @@
           h3 For citizens
           p Individuals, companies, and foundations search for projects within their area and invest directly in the civic ameneties and community projects they care about most.
           = link_to 'Find projects', discover_path, class: 'button'
-
-  section.main-section.section-with-hero-header
-    = hero_header_tag @presenter, { class: 'text-center' }, @presenter.pricing_image do
-      header.title-information
-        .row
-          .small-12.columns
-            h2 Get started
-        .row
-          .small-12.columns
-            strong.subtitle Plans to fit your needs
-      .row
-        .small-12.columns
-          = link_to '#pricing', class: 'expand-section' do
-            strong.expansion-btn.show-for-large-up[data-alternative-text="Click to show less"] Click to learn more
-            span.expand-section-icon.icon-fa-chevron-down alt='Go to Pricing section'
-
-    #pricing.section-content
-      .row.medium-collapse
-        .pricing-table.small-12.columns
-          ul.pricing-table-content
-            li.title Single
-            li.price.description
-              span.strong $0
-              | /month
-              span +3% / transaction
-            li.description For community organizations
-            li.description Fund community projects
-            li.cta-button.description = link_to 'Get started', start_path, class: 'button secondary'
-            li.bullet-item Run single project
-            li.bullet-item Unify your message
-            li.bullet-item Share your story
-        .pricing-table.suggested-plan.small-12.columns
-          ul.pricing-table-content
-            li.title Partner
-            li.price.description
-              span.strong $299
-              | /month
-              span +0% / transaction
-            li.description For nonprofits & CDFIs
-            li.description Fundraising managment
-            li.cta-button.description = mail_to 'howdy@neighbor.ly', 'Contact us', class: 'button'
-            li.bullet-item Run multiple projects
-            li.bullet-item Manage applications
-            li.bullet-item Challenge matches
-        .pricing-table.small-12.columns
-          ul.pricing-table-content
-            li.title Enterprise
-            li.price.description
-              span.strong Custom
-            li.description For enterprise customers
-            li.description Custom fundraising toolkit
-            li.cta-button.description = mail_to 'howdy@neighbor.ly', 'Contact us', class: 'button secondary'
-            li.bullet-item White label website
-            li.bullet-item Branded campaigns
-            li.bullet-item Accept applications
 
   section#team.main-section.full-width-row
     .row

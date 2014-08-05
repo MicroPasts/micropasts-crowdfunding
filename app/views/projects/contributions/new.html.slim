@@ -14,7 +14,7 @@
         .large-8.columns.large-centered
           .row.collapse
             .large-2.small-2.columns
-              span.prefix $
+              span.prefix £
             .large-8.small-8.columns
               = form.number_field :value, required: true, label: false, autocomplete: 'off', min: 10, data: { rewards: @rewards.map{|r| {id: r.id, minimum_value: r.minimum_value.to_i} }.to_json }, class: 'with-prefix with-postfix'
             .large-2.small-2.columns
