@@ -27,11 +27,13 @@ footer
       = render 'layouts/newsletter'
   .row.subfooter.collapse.text-center
     .large-3.columns
-      = image_tag 'about/bm_logo.png', class: 'logoFooter', title: 'Developed in Bloomsbury'
+      = image_tag 'about/bm_logo.png', title: 'Developed in Bloomsbury'
     .large-3.columns
-      = image_tag 'about/ucl-home_trans_small.png', class: 'logoFooter', title: 'UCL powered'
+      = image_tag 'about/ucl-home_trans_small.png', title: 'UCL powered'
     .large-3.columns
-      = image_tag 'about/AHRClogo.jpg', class: 'logoFooter', title: '2013 AHRC grantee'
+      = image_tag 'about/AHRClogo.jpg', title: '2013 AHRC grantee'
+    .large-3.columns
+      = image_tag 'about/powered_by_neighborly.png', title: 'Powered by Neighbor.ly'
   .row.subfooter.collapse
     ul
       li = mail_to Configuration[:email_contact], t('.contact')
