@@ -8,7 +8,7 @@ module Project::OrganizationType
       end
 
       def organization_types
-        [:municipality, :neighborhood_organization, :cid_bid, :registered_nonprofit, :nonprofit_501c3, :public_private_partnership, :other, :not_sure]
+        [:academic, :advocacy, :archaeological, :community, :government, :museum, :university, :volunteer, :other]
       end
     end
   end
