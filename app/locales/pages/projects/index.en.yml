@@ -14,8 +14,8 @@ en:
         already_joined: 'Already joined? %{link}.'
         sign_in: 'Sign in'
       hero:
-        title: 'Invest in the places you care about.'
-        subtitle_html: "Welcome! Exciting things happening for MicroPasts. Curious about what's next? Sign up below and be among the first to know."
+        title: 'Welcome to MicroPasts Crowd-Funding.'
+        subtitle_html: "Exciting things are happening on the MicroPasts platforms. Curious about what's next?<br /> Sign up below and be among the first to know."
         email_placeholder: 'Your email'
         submit: 'Submit'
       start-one:

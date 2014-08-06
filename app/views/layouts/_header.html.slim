@@ -18,6 +18,10 @@ header.contain-to-grid.fixed
       .top-bar-section
         ul.left.main-menu
           li
+            a href='http://micropasts.org' title='The MicroPasts project homepage' MicroPasts home
+          li 
+            a href='http://crowdsourced.micropasts.org title='Our crowd-sourcing projects' Crowd-Sourcing
+          li
             = link_to main_app.learn_path do
               = t('.about')
           li
@@ -26,6 +30,8 @@ header.contain-to-grid.fixed
           li
             = link_to main_app.start_path do
               = t('.start_campaign')
+          li
+            a href='http://community.micropasts.org' title='Our community forum' Community
 
         ul.right
           - if user_signed_in?
