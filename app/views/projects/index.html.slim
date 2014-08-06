@@ -107,10 +107,9 @@
 
       .row
         = render @channels
-  - if @press_assets.any?
-    section.press.hide-for-small
-      .row
-        .small-12.columns
-          - @press_assets.each do |asset|
-            = link_to asset.url, target: :blank, title: asset.title do
+  section.press.hide-for-small
+    .row
+      .small-12.columns
+        - @press_assets.each do |asset|
+          = link_to asset.url, target: :blank, title: asset.title do
             = image_tag asset.image.thumb.url
