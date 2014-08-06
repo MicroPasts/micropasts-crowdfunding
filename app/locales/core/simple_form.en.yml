@@ -90,7 +90,7 @@ en:
           expires_at: "How long will your campaign run? Research shows a 'Goldilocks window' between 30 and 60 days."
           goal: "What is the total goal for the project? Keep in mind MicroPasts' platform fee, and the cost to fulfill rewards that you offer. No commas, currency sign or decimal."
           first_contributions: "Having contributors already in hand is critical to the success of your project. You can list contributions already received, or contributions you can count on to come in on day 1 of your project. If you have neither, explain who you plan to target with your campaign."
-          headline: "In 130 characters or less, summarize your project. Why should contributors support it?"
+          headline: "In 130 characters or less, summarise your project. Why should contributors support it?"
           name: "Be concise and objective. 8 words or less."
           uploaded_image: "Upload a minimum 500x340 image(.jpg or .png)."
           hero_image: "Upload a minimum 1600x600 image(.jpg or .png)."

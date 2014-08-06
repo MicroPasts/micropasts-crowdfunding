@@ -1,4 +1,4 @@
-= f.input :profile_type, collection: {' Person'=> 'personal', 'Organization (Company, Foundation, etc...)'=> 'organization'}, as: :radio_buttons
+= f.input :profile_type, collection: {' Person'=> 'personal', 'Organisation'=> 'organization'}, as: :radio_buttons
 .row
   .large-8.medium-8.columns
     #personal-name.profile-type-name style="#{"display: none;" unless @user.personal?}"
