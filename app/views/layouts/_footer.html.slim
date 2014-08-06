@@ -8,7 +8,6 @@ footer
       ul
         li = link_to t('.discover'), main_app.discover_path
         li = link_to t('.start_campaign'), main_app.start_path
-        li = link_to t('.about'), main_app.learn_path
         li = link_to t('.how_it_works'), main_app.how_it_works_path
         li = link_to t('.faq'), main_app.faq_path
         li = link_to t('.legal'), main_app.privacy_path
@@ -38,6 +37,11 @@ footer
       = render 'layouts/newsletter'
   .row.subfooter.collapse
     .large-3.columns
-      = link_to Configuration[:company_name], main_app.root_url, title: Configuration[:company_name], class: 'logo'
-    .large-9.columns
-      p = t('.built_with_love').html_safe
+      = image_tag 'about/bm_logo.png', class: 'logoFooter', title: 'Developed in Bloomsbury'
+    .large-3.columns
+      = image_tag 'about/ucl-home_trans_small.png', class: 'logoFooter', title: 'UCL powered'
+    .large-3.columns
+      = image_tag 'about/AHRClogo.jpg', class: 'logoFooter', title: '2013 AHRC grantee'
+  .row.subfooter.collapse
+    ul
+      li mail_to Configuration[:email_contact], t('.contact')
