@@ -9,7 +9,7 @@ en:
       filter: 'Status'
       showing_results_for: 'Showing results for: '
       filters:
-        recommended: 'Recommended'
+        recommended: 'Funding campaigns we love!'
         expiring: 'Ending Soon'
         recent: 'Recent'
         successful: 'Successful'
