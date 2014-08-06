@@ -30,21 +30,21 @@
             li = link_to 'Terms and conditions', main_app.terms_path
         .medium-6.columns
           h3 Social media
-          p 
+          p
             | We are active on social media channels. Join us and discuss what you want to see.
           ul.social
             li
-              a href='http://twitter.com/micropasts' 
+              a href='http://twitter.com/micropasts'
                 i.icon-et-twitter.glyphicon-inverse
                 | Twitter
             li
               a href='http://facebook.com/micropasts'
-              i.icon-et-facebook.glyphicon-inverse
-              | Facebook
+                i.icon-et-facebook.glyphicon-inverse
+                | Facebook
             li
               a href='http://flickr.com/micropasts'
-              i.icon-et-flickr.glyphicon-inverse
-              | Flickr
+                i.icon-et-flickr.glyphicon-inverse
+                | Flickr
           .twitter-box
             = link_to "Follow @#{::Configuration[:twitter_username]}", "http://twitter.com/#{::Configuration[:twitter_username]}", class: 'twitter-follow-button', data: { button: 'blue', :'text-color' => '#ffffff', :'link-color' => '#ffffff', width: '350px' }
           .facebook-box
@@ -116,5 +116,5 @@
       .open-type.small-12.columns.text-center
         .open-type-image
           = image_tag 'learn/github.png', alt: 'GitHub octocat logo', title: 'GitHub', class: 'github-logo'
-        .open-type-image 
+        .open-type-image
           = image_tag 'learn/cc.png', alt: 'Creative commons logo', title: 'Creative Commons', class: 'github-logo'
