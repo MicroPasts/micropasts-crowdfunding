@@ -44,7 +44,7 @@
 
         .team-members
           = render 'team_member', nickname: :andy, name: 'Andy Bevan', role: 'Principal Investigator',
-            description: 'A UCL archaeologist, lecturer and nominal lead for this project. Andy has interests in spatial and computational modelling landscape archaeology and artefact studies. ',
+            description: 'A UCL archaeologist, lecturer and nominal lead for this project. Andy is a geospatial wizard. ',
             social_networks: { github: 'https://github.com/ahb108' }
           = render 'team_member', nickname: :daniel, name: 'Daniel Pett', role: 'Co-Investigator',
             description: 'ICT advisor at the British Museum, UK. Daniel tinkers with technology.',
@@ -97,4 +97,5 @@
       .open-type.small-12.columns.text-center
         .open-type-image
           = image_tag 'learn/github.png', alt: 'GitHub octocat logo', title: 'GitHub', class: 'github-logo'
-        strong.important-notice Open Source
+        .open-type-image 
+          = image_tag 'learn/cc.png', alt: 'Creative commons logo', title: 'Creative Commons', class: 'github-logo'
