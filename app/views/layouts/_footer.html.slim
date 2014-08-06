@@ -1,28 +1,4 @@
 footer
-  .row
-    .medium-4.columns.quick-links
-      h6
-        i.icon-et-info-circled
-        = t('.quick_links')
-
-      ul
-        li = link_to t('.how_it_works'), main_app.how_it_works_path
-        li = link_to t('.faq'), main_app.faq_path
-        li = link_to t('.legal'), main_app.privacy_path
-        li = link_to t('.terms'), main_app.terms_path
-        li = mail_to Configuration[:email_contact], t('.contact')
-
-    .medium-4.columns.stay-in-touch
-      h6
-        i.icon-et-infinity
-        = t('.stay_in_touch')
-
-      .twitter-box
-        = link_to "Follow @#{::Configuration[:twitter_username]}", "http://twitter.com/#{::Configuration[:twitter_username]}", class: 'twitter-follow-button', data: { button: 'blue', :'text-color' => '#ffffff', :'link-color' => '#ffffff', width: '224px' }
-      .facebook-box
-        .fb-like data-href="#{Configuration['facebook_url']}" data-width="224" data-height="40" data-header="false" data-show-border="false" data-colorscheme="dark" data-layout="standard" data-action="like" data-show-faces="false" data-send="false"
-
-      = render 'layouts/newsletter'
   .row.subfooter.collapse.text-center
     .large-3.columns
       = image_tag 'about/bm_logo.png', title: 'Developed in Bloomsbury'
