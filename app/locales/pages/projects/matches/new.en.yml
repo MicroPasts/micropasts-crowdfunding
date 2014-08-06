@@ -3,7 +3,7 @@ en:
     matches:
       new:
         hero_call_html: "Looking to make a big impact?<br>Matching is the right tool for you"
-        title: "Configurate your challenge match."
+        title: "Set up your challenge match."
         steps:
           first:
             title: "Multiply your giving"
@@ -15,7 +15,7 @@ en:
             title: "Earn media views"
             description: "Engage a whole new audience and get recognized for contributing to a worthy project."
         i_pledge_to_match: "I pledge to match"
-        for_each_1_raised_between: "for each $1 raised between"
+        for_each_1_raised_between: "for each £1 raised between"
         and: "and"
         up_to: "up to"
         form:
