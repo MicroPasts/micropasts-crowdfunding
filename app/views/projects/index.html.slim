@@ -97,9 +97,20 @@
             h3 = t('.start-one.title')
             span.button.custom.with-icon.large = t('.start-one.button')
 
-  section.press.hide-for-small
-    .row
-      .small-12.columns
-        - @press_assets.each do |asset|
-          = link_to asset.url, target: :blank, title: asset.title do
+  - if @channels.any?
+    section.channels.default-list
+      .row
+        .large-12.columns
+          h3
+            i.icon-et-megaphone
+            = t('.channels')
+
+      .row
+        = render @channels
+  - if @press_assets.any?
+    section.press.hide-for-small
+      .row
+        .small-12.columns
+          - @press_assets.each do |asset|
+            = link_to asset.url, target: :blank, title: asset.title do
             = image_tag asset.image.thumb.url
