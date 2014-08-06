@@ -38,7 +38,7 @@
               = " #{@project.time_to_go[:unit].capitalize} #{pluralize_without_number(@project.time_to_go[:time], t('words.remaining_singular'), t('words.remaining_plural'))}"
 
 
-      .large-4.medium-4.columns
+      .large-4.medium-4.columns.black
         .subtitle
           h5= t(".subtitle.#{@project.campaign_type}", category_name: link_to(@project.category, discover_path(category: @project.category.to_s.downcase)), city: @project.display_address_formated, author: link_to(@project.user.display_name, user_path(@project.user))).html_safe
         hr
