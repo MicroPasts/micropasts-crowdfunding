@@ -91,12 +91,7 @@
                 = t('words.see_more')
                 i.icon-et-right-circled
 
-      section.start-one.hide-for-small
-        .small-12.columns
-          = link_to start_path do
-            h3 = t('.start-one.title')
-            span.button.custom.with-icon.large = t('.start-one.button')
-
+      
   - if @channels.any?
     section.channels.default-list
       .row
@@ -107,6 +102,14 @@
 
       .row
         = render @channels
+    
+  section.start-one.hide-for-small.
+    .row
+      .small-12.columns
+          = link_to start_path do
+            h3 = t('.start-one.title')
+            span.button.custom.with-icon.large = t('.start-one.button')
+
   section.press.hide-for-small
     .row
       .small-12.columns
