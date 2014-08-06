@@ -2,7 +2,7 @@ en:
   models:
     contribution_for_project_owner:
       address_city: 'City'
-      address_neighborhood: 'Neighborhood'
+      address_neighborhood: 'Neighbourhood'
       address_state: 'State'
       address_street: 'Street'
       address_zip_code: 'Postal or Zip Code'

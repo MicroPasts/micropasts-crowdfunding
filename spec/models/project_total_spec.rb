@@ -43,7 +43,7 @@ describe ProjectTotal do
 
   describe 'net amount' do
     before do
-      Configuration.stub(:[]).with(:email_payments).and_return('books@neighbor.ly')
+      Configuration.stub(:[]).with(:email_payments).and_return('info@micropasts.org')
     end
 
     context 'with payment service fees paid by project owner' do

@@ -4,7 +4,7 @@ class UserObserver < ActiveRecord::Observer
   end
 
   def after_create(user)
-    return if user.email =~ /change-your-email\+[0-9]+@neighbor\.ly/
+    return if user.email =~ /change-your-email\+[0-9]+@micropasts\.org/
     WelcomeWorker.perform_async(user.id)
   end
 

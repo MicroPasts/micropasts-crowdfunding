@@ -16,7 +16,7 @@ describe UserObserver do
     context 'when the user is with temporary email' do
       it 'does not send to worker' do
         expect_any_instance_of(WelcomeWorker).to_not receive(:perform_async)
-        create(:user, email: "change-your-email+#{Time.now.to_i}@neighbor.ly")
+        create(:user, email: "change-your-email+#{Time.now.to_i}@micropasts.org")
       end
     end
 

@@ -1,6 +1,6 @@
 - if @user
   - @title = t('.update_email_title')
-  - if @user.email =~ /change-your-email\+[0-9]+@neighbor\.ly/
+  - if @user.email =~ /change-your-email\+[0-9]+@micropasts\.org/
     - @user.email = nil
 - else
   - @title = t('.site_title')
@@ -18,7 +18,7 @@
           | Hello, #{@user.display_name}.
           br/
           br/
-          |We need some info - please 
+          |We need some info - please
           i add your email address
           |.
         - else

@@ -61,7 +61,9 @@ module Concerns::AuthenticationHandler
         'channel.staging.neighbor.ly',
         'kaboom.neighbor.ly',
         'cfg.neighbor.ly',
-        'makeitright.neighbor.ly']
+        'makeitright.neighbor.ly',
+        'micropasts.crowdfunding.herokuapp.com'
+      ]
     end
   end
 end

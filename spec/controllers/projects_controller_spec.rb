@@ -70,7 +70,7 @@ describe ProjectsController do
     end
 
     describe 'users without email' do
-      let(:current_user) { create(:user, email: "change-your-email+#{Time.now.to_i}@neighbor.ly") }
+      let(:current_user) { create(:user, email: "change-your-email+#{Time.now.to_i}@micropasts.org") }
 
       before do
         get :index
