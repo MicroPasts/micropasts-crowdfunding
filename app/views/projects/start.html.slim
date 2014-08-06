@@ -3,7 +3,7 @@
 - channel = controller.channel
 
 .start-page
-  header.hero[data-image-url="#{ (channel && channel.start_hero_image.present?) ? channel.start_hero_image_url(:blur) : image_path('start/hero.jpg')}"]
+  header.hero
     .row
       .large-8.columns.large-centered.text-center
         h2
@@ -40,18 +40,6 @@
         - unless channel
           .large-12.columns
             h2 = t('.who.title')
-          .large-4.medium-4.columns
-            .large-10.columns.large-centered
-              i.icon-fa-building
-              h5 = t('.who.local-governments')
-          .large-4.medium-4.columns
-            .large-10.columns.large-centered
-              i.icon-fa-heart
-              h5 = t('.who.nonprofits')
-          .large-4.medium-4.columns
-            .large-10.columns.large-centered
-              i.icon-fa-home
-              h5 = t('.who.neighborhood-organizations')
         .large-11.columns.large-centered
           .row
             .large-12.columns

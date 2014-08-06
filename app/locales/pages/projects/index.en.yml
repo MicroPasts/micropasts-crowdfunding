@@ -15,9 +15,9 @@ en:
         sign_in: 'Sign in'
       hero:
         title: 'Welcome to MicroPasts Crowd-Funding.'
-        subtitle_html: "Exciting things are happening on the MicroPasts platforms. Curious about what's next?<br /> Sign up below and be among the first to know."
+        subtitle_html: "Exciting things are happening on the MicroPasts platforms. <br />Curious about what's next?<br /> Sign up below and be among the first to know."
         email_placeholder: 'Your email'
         submit: 'Submit'
       start-one:
-        title: 'Have a community project in need of funding?'
-        button: 'Start one in your area'
+        title: 'Do you have a project or idea to crowd-fund?'
+        button: 'Get started now!'
