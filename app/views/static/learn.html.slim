@@ -23,15 +23,15 @@
             | MicroPasts helps connect people with research projects about archaeology, history and heritage that they can help fund.
       .row.text-center
         .medium-6.columns
-          h6 More information
-            p
-              | Testing
-        .medium-6.columns
+          h3 More about us
+          ul
+            li = link_to 'How it works', main_app.how_it_works_path
+            li = link_to 'Frequently asked questions', main_app.faq_path
+            li = link_to 'Our privacy policy', main_app.privacy_path
+            li = link_to 'Terms and conditions', main_app.terms_path
           h3 Social media
-            .twitter-box
-              = link_to "Follow @#{::Configuration[:twitter_username]}", "http://twitter.com/#{::Configuration[:twitter_username]}", class: 'twitter-follow-button', data: { button: 'blue', :'text-color' => '#ffffff', :'link-color' => '#ffffff', width: '224px' }
-            .facebook-box
-              .fb-like data-href="#{Configuration['facebook_url']}" data-width="224" data-height="40" data-header="false" data-show-border="false" data-colorscheme="dark" data-layout="standard" data-action="like" data-show-faces="false" data-send="false"
+          p Individuals, companies, and foundations search for projects within their area and invest directly in the civic ameneties and community projects they care about most.
+          = link_to 'Find projects', discover_path, class: 'button'
 
   section#team.main-section.full-width-row
     .row
