@@ -2,7 +2,6 @@ article.team-member.small-12.medium-3.columns.left
   header
     = image_tag "learn/team/#{nickname}.jpg", class: 'team-member-picture', alt: "#{name}'s picture", title: name
     h3.name = name
-  p.description = description
   ul
     - social_networks.each do |network, url|
       li.social-network
