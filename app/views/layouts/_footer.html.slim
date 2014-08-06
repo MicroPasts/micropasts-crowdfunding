@@ -10,4 +10,11 @@ footer
       = image_tag 'powered_by_neighborly.png', title: 'Powered by Neighbor.ly'
   .row.subfooter.collapse
     ul
-      li = mail_to Configuration[:email_contact], t('.contact')
+      li 
+        a<> href='mailto:info@micropasts.org' <i class="glyphicon glyphicon-envelope glyphicon-inverse"></i> Email
+      li
+        a<> href='http://twitter.com/micropasts' <i class="icon-et-twitter glyphicon-inverse"></i> Twitter
+      li
+        a<> href='http://facebook.com/micropasts' <i class="icon-et-facebook glyphicon-inverse"></i> Facebook
+      li
+        a<> href='http://flickr.com/micropast' <i class="icon-et-flickr glyphicon-inverse"></i> Flickr
