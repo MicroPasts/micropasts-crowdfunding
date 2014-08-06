@@ -3,7 +3,7 @@
 - else
   - resource = @notification.match
 
-|Howdy, #{resource.user.display_name}!
+|Hello, #{resource.user.display_name}!
 br
 br
 |This confirms your #{resource.class.model_name.human} to #{link_to(resource.project.name, project_url(resource.project))}. Please keep this email as a receipt. Also, note that if you paid using a credit card, the charge will appear on your statement as #{Configuration[:company_name]}.

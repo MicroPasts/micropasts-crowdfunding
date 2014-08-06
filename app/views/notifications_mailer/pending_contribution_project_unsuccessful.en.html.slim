@@ -1,5 +1,5 @@
 - contribution = @notification.contribution
-|Howdy, #{contribution.user.name}!
+|Hello, #{contribution.user.name}!
 br
 br
 |Unfortunately, the project #{link_to(contribution.project.name, "#{Configuration[:base_url]}/projects/#{contribution.project.to_param}")} did not reach its goal and will not be funded on #{Configuration[:company_name]}.

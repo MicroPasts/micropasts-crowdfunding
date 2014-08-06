@@ -1,5 +1,5 @@
 - match = @notification.contribution.matchings.first.match
-|Howdy, #{@notification.user.display_name}!
+|Hello, #{@notification.user.display_name}!
 br/
 | Thanks to you and #{match.original_contributions.with_state(:confirmed).count - 1} other contributors, #{match.user.display_name}'s challenge match was met! Together you contributed #{number_to_currency match.total_pledged} toward #{match.project.name}.
 br/

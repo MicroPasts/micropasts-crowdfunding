@@ -1,6 +1,6 @@
 - contribution = @notification.contribution
 br
-|Howdy, #{contribution.user.name}!
+|Hello, #{contribution.user.name}!
 br
 br
 |Thanks to you and #{contribution.project.total_contributions - 1} other supporters, #{link_to(contribution.project.name, "#{Configuration[:base_url]}/projects/#{contribution.project.to_param}")} was successfully funded on #{Configuration[:company_name]}. Together, you raised #{contribution.project.display_pledged}, totalling #{contribution.project.progress}% of the goal!
