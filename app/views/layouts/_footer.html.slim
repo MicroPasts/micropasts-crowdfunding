@@ -44,4 +44,4 @@ footer
       = image_tag 'about/AHRClogo.jpg', class: 'logoFooter', title: '2013 AHRC grantee'
   .row.subfooter.collapse
     ul
-      li mail_to Configuration[:email_contact], t('.contact')
+      li = mail_to Configuration[:email_contact], t('.contact')
