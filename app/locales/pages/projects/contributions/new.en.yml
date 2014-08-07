@@ -3,7 +3,7 @@ en:
     contributions:
       new:
         title: "Contribute to this campaign"
-        minimum_value: 'Contribute any amount, as little as £2'
+        minimum_value: 'Contribute any amount, as little as £5'
         subtitle: "Select your amount or select your reward."
         contribute: "Contribute to <strong>%{project_name}</strong>"
         contribution_with_matches: "Contributions to <strong>%{project_name}</strong> will be matched by %{matchers}"
