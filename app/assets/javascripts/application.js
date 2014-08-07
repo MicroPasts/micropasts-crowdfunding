@@ -16,3 +16,4 @@
 //= require nprogress-pjax
 //= require nprogress-ajax
 //= require neighborly-admin
+//= require ./lib/survey-reveal.js
