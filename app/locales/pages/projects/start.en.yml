@@ -1,42 +1,42 @@
 en:
   projects:
     start:
-      title: "A collaborative way to build and fund ideas"
+      title: "A collaborative way to foster research into our human past"
       get-started: 'Get Started'
       steps:
         first:
-          title: '1. Submit an Idea'
-          description: "The first step to getting started is getting your idea out. We'll review it to make sure it fits with our scope of work."
+          title: "1. Submit an Idea"
+          description: "A first step in getting started with a MicroPasts crowd-funding project is to come up with an idea and find some equally enthusiastic people to work on it (representing a healthy mix of volunteers and traditional academics). Then fill in this short form [link] and send it to us — we'll then help ensure your proposal fits well with MicroPasts' emphasis on open research collaboration."
         second:
-          title: '2. Plan Your Project'
-          description: "As you're developing your story and campaign, take some time to create a marketing plan to help ensure your success."
+          title: '2. Plan Your Campaign'
+          description: "It is worth thinking about how to promote your project bid once it is launched on the crowd-funding site. Take some time to create a publicity plan to help ensure your bid for financial support is a success."
         third:
           title: '3. Launch Your Campaign'
-          description: "Once your project is developed and approved, you'll be ready to go live and start raising money!"
+          description: "Once your project is developed, approved and we have a few bits of necessary content from you, then you'll be ready to go live and start raising money."
       who:
         title: 'Who can run a campaign?'
-        description: "To submit an idea on this platform, you need to have a member of the public and an academic or an academic institution in partnership."
+        description: 'All of our projects need to demonstrate that they will involve a working partnership between one or more members of the public (better yet an organised volunteer group such as a historical society) and an academic institution. You may already have the necessary contacts for such a partnership or you might look to build such a relationship via our <a href="http://community.micropasts.org" title="The community forum">forum</a>.'
       work:
-        title: 'A successful campaign takes some work.'
-        subtitle: "Here's what you'll need:"
+        title: 'A successful crowd-funding campaign does not usually happen on its own, but takes some work'
+        subtitle: "So here's what you'll need:"
         team:
-          title: 'A Strong Team'
-          description: "In order to receive the greatest return, you'll need an active and engaged team backed by a civic minded organization."
+          title: 'A good group'
+          description: "You'll need an active and engaged team with a mix of talents, and the right community and institutional backing. Make this your first priority and make sure to develop any project proposal together. "
         imagery:
-          title: 'Beautiful Imagery'
-          description: 'A picture is worth a thousand words. Engage your contributors with images that capture their attention.'
+          title: 'A beautiful image'
+          description: 'A picture is worth a thousand words. We will want one or more eye-catching still images to advertise you project on the MicroPasts site and engage potential contributors.'
         video:
-          title: 'A Powerful Video'
-          description: 'A video is the very best way to summarise your project allow contributors to get a glimpse into your organization.'
+          title: 'A powerful video'
+          description: 'A short video is usually the best way to allow contributors to get a glimpse of you, any organisations that are backing you and your overall project idea. Videos are not mandatory, but are increasingly easy to produce and really worth the effort! '
         detailed:
-          title: 'Detailed Copy'
-          description: 'Explain your project in detail. The more users know about your project and how you plan to use their money, the more likely they are to contribute.'
+          title: 'Project details'
+          description: 'You will need to tell people about your plans in a little more detail (see here). The more users know about your project and how you plan to use their money, the more likely they are to contribute.'
         rewards:
-          title: 'Compelling Rewards'
-          description: 'Incentivise contributors further by offering rewards as icing on the cake.'
+          title: 'Compelling rewards'
+          description: 'If you can, it is worth offering some incentives to possible contributors by promising to show them some early fruits of your work, providing a route by which they might get involved if they want, or simply by outlining some some nice ways that you will thank them for their support.'
         engagement:
-          title: 'Continual Engagement'
-          description: 'Stay connected with your current supporters while spreading the message to new one. Engagement is key to a successful campaign.'
+          title: 'Sustained contact'
+          description: 'It is really worth staying in contact with your supporters while spreading the message to new ones. Engagement is often key to a successful crowd-funding campaign.'
       inspiration:
         title: 'Need a little inspiration?'
-        subtitle: 'Check out other campaigns!'
+        subtitle: 'You can read <a href="/how-it-works" title="How it works in detail">detailed guidance</a> or check out other campaigns!'
