@@ -21,11 +21,11 @@ describe Contribution::CustomValidators do
     let(:contribution){ build(:contribution, reward: reward, project: reward.project, value: value) }
     subject{ contribution }
     context "when value is lower than reward minimum value" do
-      let(:value){ 499.99 }
+      let(:value){ 49.99 }
       it{ should_not be_valid }
     end
     context "when value is equal than reward minimum value" do
-      let(:value){ 500.00 }
+      let(:value){ 50.00 }
       it{ should be_valid }
     end
     context "when value is greater than reward minimum value" do
