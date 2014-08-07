@@ -1,12 +1,8 @@
 = content_for :title, t('.title')
 
 .how-it-works-page.static-page
-  section.main-section.section-with-hero-header
-    = hero_header_tag @presenter, { class: 'text-center' }, @presenter.how_it_works_image do
-      header.title-information
-        .row
-          .small-12.columns
-            h2 Learn how it works
-        .row
-          .small-12.columns
-            strong.subtitle Fuelling community-based archaeological and historical research
+  header.hero[data-image-url=image_path('home-hero-micropasts.jpg')]
+    .row
+      .small-12.medium-12.medium-centered.columns
+        h2.text-center
+          More on how it works
