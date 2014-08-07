@@ -2,9 +2,9 @@ en:
   layouts:
     header:
       start_campaign: 'Start a campaign'
-      discover: 'Campaigns'
-      about: 'About us'
+      discover: 'Support a campaign'
+      about: 'About'
       sign-out: 'Log out'
-      sign-up: 'Join us'
+      sign-up: 'Sign up'
       sign-in: 'Log in'
 

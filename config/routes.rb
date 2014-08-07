@@ -145,7 +145,7 @@ Neighborly::Application.routes.draw do
     end
   end
 
-  resources :users, path: 'neighbors' do
+  resources :users, path: 'contributors' do
     resources :questions, controller: 'users/questions', only: [:new, :create]
     resources :projects, controller: 'users/projects', only: [ :index ]
     resources :contributions, controller: 'users/contributions', only: [:index] do
@@ -178,7 +178,7 @@ Neighborly::Application.routes.draw do
   end
 
   # Redirect from old users url to the new
-  get "/users/:id", to: redirect('neighbors/%{id}')
+  get "/users/:id", to: redirect('contributors/%{id}')
 
   get "/set_email" => "users#set_email", as: :set_email_users
   get "/:id", to: redirect('projects/%{id}')
