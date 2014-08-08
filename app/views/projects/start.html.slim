@@ -46,7 +46,7 @@
               - if channel
                 = channel.start_primary_content_html
               - else
-                p = t('.who.description')
+                p = t('.who.description').html_safe
 
               = link_to t('.get-started'), new_project_path, class: 'button large large-5 medium-5 columns large-centered'
 
