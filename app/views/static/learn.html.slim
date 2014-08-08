@@ -31,7 +31,6 @@
             li = link_to 'Our privacy policy', main_app.privacy_path
             li = link_to 'Terms and conditions', main_app.terms_path
         .medium-6.columns
-          h3 Social media
           p
             | We are active on social media channels. Join us and discuss what you want to see.
             ul
@@ -44,12 +43,6 @@
               li.social-network
                 a href="http://flickr.com/micropasts" 
                   i.social-network-icon.icon-et-flickr-circled title=("MicroPast's Flickr account")
-          
-          .twitter-box
-            = link_to "Follow @#{::Configuration[:twitter_username]}", "http://twitter.com/#{::Configuration[:twitter_username]}", class: 'twitter-follow-button', data: { button: 'blue', :'text-color' => '#ffffff', :'link-color' => '#ffffff', width: '350px' }
-          .facebook-box
-            .fb-like data-href="#{Configuration['facebook_url']}" data-width="350" data-header="false" data-show-border="false" data-colorscheme="dark" data-layout="standard" data-action="recommend" data-show-faces="true" data-send="false" data-share="true"
-
   section#team.main-section.full-width-row
     .row
       .small-12.columns
