@@ -34,19 +34,14 @@
           h3 Social media
           p
             | We are active on social media channels. Join us and discuss what you want to see.
-          ul.inline-list
-            li
-              a href='http://twitter.com/micropasts'
-                i.icon-et-twitter.glyphicon-inverse
-                | Twitter
-            li
-              a href='http://facebook.com/micropasts'
-                i.icon-et-facebook.glyphicon-inverse
-                | Facebook
-            li
-              a href='http://flickr.com/micropasts'
-                i.icon-et-flickr.glyphicon-inverse
-                | Flickr
+
+            a href="http://twitter.com/micropasts" 
+              i.social-network-icon.icon-et-twitter-circled title=("MicroPast's Twitter account") 
+            a href="http://facebook.com/micropasts" 
+              i.social-network-icon.icon-et-facebook-circled title=("MicroPast's Facebook account")
+            a href="http://flickr.com/micropasts" 
+              i.social-network-icon.icon-et-flickr-circled title=("MicroPast's Flickr account")
+          
           .twitter-box
             = link_to "Follow @#{::Configuration[:twitter_username]}", "http://twitter.com/#{::Configuration[:twitter_username]}", class: 'twitter-follow-button', data: { button: 'blue', :'text-color' => '#ffffff', :'link-color' => '#ffffff', width: '350px' }
           .facebook-box
