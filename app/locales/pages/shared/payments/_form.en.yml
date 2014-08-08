@@ -2,7 +2,7 @@ en:
   shared:
     payments:
       form:
-        title: 'Please select a payment method'
+        title: 'Pay using PayPal Express'
         payment-method:
           fees: 'Fees:'
           balanced-creditcard:
