@@ -6,8 +6,8 @@ begin
     address: 'smtp.mandrillapp.com',
     port: '587',
     authentication: :plain,
-    user_name: Configuration[:mandrill_user_name],
-    password: Configuration[:mandrill],
+    user_name: Configuration[:MANDRILL_USERNAME],
+    password: Configuration[:MANDRILL_APIKEY],
     domain: 'crowdfunded.micropasts.org'
     }
     ActionMailer::Base.delivery_method = :smtp
