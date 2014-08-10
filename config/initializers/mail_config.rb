@@ -8,7 +8,7 @@ begin
     authentication: :plain,
     user_name: Configuration[:mandrill_user_name],
     password: Configuration[:mandrill],
-    domain: 'heroku.com'
+    domain: 'crowdfunded.micropasts.org'
     }
     ActionMailer::Base.delivery_method = :smtp
   end
