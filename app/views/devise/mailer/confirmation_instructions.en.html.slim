@@ -1,15 +1,15 @@
 |Welcome, #{@email},
 br
 br
-|Almost ready to use #{Configuration[:company_name]}! Please confirm your email by clicking the link below:
+|You are almost ready to use #{Configuration[:company_name]}! Please confirm your email by clicking the link below:
 br
 br
 h1 #{link_to 'Confirm my email', confirmation_url(@resource, :confirmation_token => @token)}
 br
 br
-|If you received this email in error, please disregard.
+|If you think that you have received this email in error, please disregard it.
 br
 br
-|High fives,
+|Yours sincerely,
 br
 |The #{Configuration[:company_name]} Team
