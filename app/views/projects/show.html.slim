@@ -1,20 +1,6 @@
 - content_for :title, @project.name
 = render partial: 'layouts/disqus_count'
-= content_for :meta_tags do
-  - if @update
-    meta name="description" content=@update.title
-    meta property="og:title" content=@update.title
-    meta property="og:description" content=@update.comment
-    meta property="og:url" content=project_url(@project, update_id: @update.id)
-  - else
-    meta name="description" content=@project.headline
-    meta property="og:title" content=@project.name
-    meta property="og:description" content=@project.headline
-    meta property="og:url" content=project_url(@project)
-  meta property="og:type" content='cause'
-  meta property="og:image" content=@project.display_image('project_thumb_facebook')
-  meta property="og:site_name" content=::Configuration[:company_name]
-  meta property="fb:admins" content=facebook_url_admin
+= render 'projects/meta_tags'
 
 .project-page
   = hero_header_tag @project, class: ('no-image' if browser.mobile?) do
@@ -90,35 +76,9 @@
     section.large-9.medium-8.columns.main
       = render 'projects/draft_warning' if @project.draft?
       = render 'projects/rejected_warning' if @project.rejected?
-
       = render 'projects/matches'
-
       = link_to t('.edit'), edit_project_path(@project), class: 'button edit show-for-small' if policy(@project).update?
-
-      nav.tabs[data-target-container=".project-page section.content"]
-        ul
-          li = tab_link_to t('.tabs.about'), project_path(@project)
-
-          - if policy(@project).update? || @project.updates.size > 0
-            li = tab_link_to project_updates_path(@project) do
-              = t('.tabs.updates')
-              span.count=" #{@project.updates.size}"
-
-          - if @project.total_contributions_without_matches > 0
-            li = tab_link_to project_contributions_path(@project) do
-              = t('.tabs.contributions')
-              span.count=" #{@project.total_contributions_without_matches}"
-
-          li = tab_link_to comments_project_path(@project) do
-            = t('.tabs.comments')
-            span.commentsCount.count style="display: none;"
-              span#countNumber
-
-          li = tab_link_to t('.tabs.faqs'), project_faqs_path(@project) if @project.project_faqs.any? || policy(@project).update?
-          li = tab_link_to t('.tabs.budget'), budget_project_path(@project) if @project.budget.present?
-          li = tab_link_to t('.tabs.terms'), project_terms_path(@project) if @project.terms.present? || @project.project_documents.any? || policy(@project).update?
-          - if policy(@project).update?
-            li = tab_link_to t('.tabs.reports'), reports_project_path(@project), 'private'
+      = render 'projects/tabs'
 
       section.content
         - if content_for? :page_content
@@ -131,19 +91,14 @@
     aside.large-3.medium-4.columns.sidebar
       .call-to-action
         - if @project.online? && !@project.expired?
-          noscript
-            .alert-box
-              strong
-                | We're sorry, but you won't be able to contribute without JavaScript enabled.
-                br
-                br
-                | Do you need some #{mail_to t('site.email.contact'), 'help'}?
+          = render 'projects/noscript'
+
           = link_to t('.contribute'), new_project_contribution_url(@project), class: "button with-icon contribute hide-for-small"
           - if current_user && (current_user.organization? || current_user.channel? || current_user.admin?)
             = link_to t('.create_match'), new_project_match_url(@project), class: "button with-icon create-match hide-for-small"
         - else
           .alert-box.secondary.status-description
-            p = t(".display_status.#{@project.campaign_type}.#{@project.display_status}", goal: @project.display_goal, date: (l(@project.expires_at.to_date, format: :long) rescue nil))
+            = display_status(@project)
 
         = link_to t('.edit'), edit_project_path(@project), class: 'button edit hide-for-small' if policy(@project).update?
 

@@ -56,7 +56,6 @@ FactoryGirl.define do
     f.online_date Time.now
     f.online_days 5
     f.how_know 'Lorem ipsum'
-    f.more_links 'Ipsum dolor'
     f.video_url 'http://vimeo.com/17298435'
     f.state 'online'
     f.home_page true
@@ -169,7 +168,7 @@ FactoryGirl.define do
     uid "MyText"
   end
 
-  factory :company_contact do
+  factory :contact do
     first_name 'First'
     last_name 'Last'
     email 'some@email.com'

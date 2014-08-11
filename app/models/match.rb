@@ -40,7 +40,7 @@ class Match < ActiveRecord::Base
   end
 
   def complete!
-    update_attributes(completed: true)
+    update_attributes!(completed: true)
   end
 
   private
