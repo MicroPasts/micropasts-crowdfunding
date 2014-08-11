@@ -6,7 +6,7 @@
       header.title-information
         .row
           .small-12.columns
-            h2 Learn how it works 
+            h2 Learn how it works
         .row
           .small-12.columns
             strong.subtitle Fuelling community-based archaeological and historical research
@@ -15,14 +15,14 @@
       .row
         .small-12.columns
           p
-            | The MicroPasts crowd-funding platform allows groups of traditional academics, organised volunteer societies and other interested individuals to advertise new research projects that they wish to conduct together, and for which they need small to medium amounts of start-up money. 
+            | The MicroPasts crowd-funding platform allows groups of traditional academics, organised volunteer societies and other interested individuals to advertise new research projects that they wish to conduct together, and for which they need small to medium amounts of start-up money.
           p
-            | Some of these projects might have been dreamt up long ago, whilst others will hopefully begin life on the pages of our forum. Each project team provides a short summary of what they want to do, an enticing short video and a brief budget - thereafter the project is let loose amongst others in search of your support. 
-          p 
-            | Anyone can make an online donation to any project they like. We hope to prioritise an under-appreciated "silent majority" of archaeological and historical research projects including activities such as finds analysis, better outreach, document digitisation, image-tagging, laboratory work, scientific sampling and/or innovative re-use of existing data, but we hope people can also think up others. Funded projects will release all of their data into the public domain so that anyone can use it. 
+            | Some of these projects might have been dreamt up long ago, whilst others will hopefully begin life on the pages of our forum. Each project team provides a short summary of what they want to do, an enticing short video and a brief budget - thereafter the project is let loose amongst others in search of your support.
+          p
+            | Anyone can make an online donation to any project they like. We hope to prioritise an under-appreciated "silent majority" of archaeological and historical research projects including activities such as finds analysis, better outreach, document digitisation, image-tagging, laboratory work, scientific sampling and/or innovative re-use of existing data, but we hope people can also think up others. Funded projects will release all of their data into the public domain so that anyone can use it.
     section.section-links
       .row.text-center
-        p 
+        p
           | You can contact us directly with any questions you have or you might find the following helpful:
         .medium-6.columns
           ul.inline-list
@@ -35,13 +35,13 @@
             | We are active on social media channels. Join us and discuss what you want to see.
             ul
               li.social-network
-                a href="http://twitter.com/micropasts" 
-                  i.social-network-icon.icon-et-twitter-circled title=("MicroPast's Twitter account") 
+                a href="http://twitter.com/micropasts"
+                  i.social-network-icon.icon-et-twitter-circled title=("MicroPast's Twitter account")
               li.social-network
-                a href="http://facebook.com/micropasts" 
+                a href="http://facebook.com/micropasts"
                   i.social-network-icon.icon-et-facebook-circled title=("MicroPast's Facebook account")
               li.social-network
-                a href="http://flickr.com/micropasts" 
+                a href="http://flickr.com/micropasts"
                   i.social-network-icon.icon-et-flickr-circled title=("MicroPast's Flickr account")
   section#team.main-section.full-width-row
     .row
@@ -63,7 +63,19 @@
           = render 'team_member', nickname: :adi, name: 'Adi Keinan-Schoonbaert', institution: 'University College London',
             description: 'A researcher and archaeologist at UCL, Adi specialises in archaeological databases, documentation, GIS and heritage management. ',
             social_networks: { linkedin: 'http://www.linkedin.com/pub/adi-keinan-schoonbaert/5b/4a0/95', twitter: 'https://twitter.com/adikeinan', github: 'https://github.com/adikeinan', mail: 'adi.keinan.09@ucl.ac.uk', globe: 'http://www.ucl.ac.uk/archaeology/people/staff/keinan-schoonbaert' }
-  
+          = render 'team_member', nickname: :temp, name: 'Rachael Sparks', 'institution: 'University College London',
+            description: 'A UCL Lecturer',
+            social_networks: { twitter: 'https://twitter.com/RachaelSparks1' }
+          = render 'team_member', nickname: :neil, name: 'Neil Wilkin', institution: 'The British Museum',
+            description: 'Curator of Bronze Age collections',
+            social_networks: { twitter: 'https://twitter.com/NWilkinBM' }
+          = render 'team_member', nickname: :temp, name: 'Jennifer Wexler', institution: 'The British Museum',
+            description: 'Bronze Age Index Manager',
+            social_networks: { twitter: 'https://twitter.com/JWexlerBM' }
+          = render 'team_member', nickname: :irio, name: 'Irio Musskopf', institution: 'Neighbor.ly',
+            description: 'Seeker of simple solutions. Student of maths. Building Neighbor.ly to make people happier.',
+            social_networks: { linkedin: 'http://linkedin.com/in/iriomk', twitter: 'https://twitter.com/irio', github: 'https://github.com/irio' }
+
   section#open.main-section.full-width-row
     .row
       .small-12.columns
