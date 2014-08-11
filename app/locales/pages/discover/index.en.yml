@@ -8,7 +8,7 @@ en:
       category: 'Category'
       state: 'Status'
       showing_results_for: 'Showing results for: '
-      filters:
+      states:
         recommended: 'Funding campaigns we love!'
         expiring: 'Ending Soon'
         recent: 'Recent'
