@@ -14,7 +14,7 @@ class Contribution < ActiveRecord::Base
   has_one :match, through: :matching
 
   validates_presence_of     :project, :user, :value
-  validates_numericality_of :value, greater_than_or_equal_to: 10.00
+  validates_numericality_of :value, greater_than_or_equal_to: 5
 
   scope :available_to_count,   -> { with_states(['confirmed', 'requested_refund', 'refunded']) }
   scope :available_to_display, -> { with_states(['confirmed', 'requested_refund', 'refunded']) }
@@ -69,19 +69,19 @@ class Contribution < ActiveRecord::Base
     Reward.where(project_id: self.project_id).where('minimum_value <= ?', self.value).order(:minimum_value)
   end
 
-  def net_payment
-    value - payment_service_fee
+  def net_value
+    if payment_service_fee_paid_by_user?
+      value
+    else
+      value - payment_service_fee
+    end
   end
 
   def payment_service_fee
     if match
       match.payment_service_fee / match.value * value
     else
-      if payment_service_fee_paid_by_user?
-        BigDecimal.new(0)
-      else
-        read_attribute(:payment_service_fee)
-      end
+      read_attribute(:payment_service_fee)
     end
   end
 end

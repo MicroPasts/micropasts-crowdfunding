@@ -10,6 +10,7 @@ describe User do
 
   describe "associations" do
     it{ should have_many :contributions }
+    it{ should have_many :matches }
     it{ should have_many :projects }
     it{ should have_many :notifications }
     it{ should have_many :updates }
@@ -157,15 +158,6 @@ describe User do
     subject{ @u.credits }
 
     it{ should == 50.0 }
-  end
-
-  describe "#update_attributes" do
-    context "when I try to update moip_login" do
-      before do
-        user.update_attributes moip_login: 'test'
-      end
-      it("should perform the update"){ user.moip_login.should == 'test' }
-    end
   end
 
   describe "#recommended_project" do

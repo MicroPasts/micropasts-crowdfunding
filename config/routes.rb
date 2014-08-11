@@ -93,7 +93,7 @@ Neighborly::Application.routes.draw do
     get "/base",                to: "static#base",              as: :base
   end
 
-  get "/discover/(:filter)(/near/:near)(/category/:category)(/tags/:tags)(/search/:search)", to: "discover#index", as: :discover
+  get "/discover/(:state)(/near/:near)(/category/:category)(/tags/:tags)(/search/:search)", to: "discover#index", as: :discover
 
   resources :tags, only: [:index]
 
@@ -166,10 +166,8 @@ Neighborly::Application.routes.draw do
     end
   end
 
-  namespace :companies do
-    get :contact, to: 'contacts#new'
-    resources :contacts, only: [:create]
-  end
+  get :contact, to: 'contacts#new'
+  resources :contacts, only: [:create]
 
   resources :images, only: [:new, :create]
 
