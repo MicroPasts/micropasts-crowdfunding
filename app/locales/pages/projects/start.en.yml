@@ -6,7 +6,7 @@ en:
       steps:
         first:
           title: "1. Submit an Idea"
-          description: "A first step in getting started with a MicroPasts crowd-funding project is to come up with an idea and find some equally enthusiastic people to work on it (representing a healthy mix of volunteers and traditional academics). Then fill in this short form [link] and send it to us — we'll then help ensure your proposal fits well with MicroPasts' emphasis on open research collaboration."
+          description: "A first step in getting started with a MicroPasts crowd-funding project is to come up with an idea and find some equally enthusiastic people to work on it (representing a healthy mix of volunteers and traditional academics). Then fill in this <a href='http://bit.ly/cfFormMP'>short form</a> and send it to us — we'll then help ensure your proposal fits well with MicroPasts' emphasis on open research collaboration."
         second:
           title: '2. Plan Your Campaign'
           description: "It is worth thinking about how to promote your project bid once it is launched on the crowd-funding site. Take some time to create a publicity plan to help ensure your bid for financial support is a success."

@@ -3,11 +3,11 @@
 .home-page
   header.hero[data-image-url=image_path('home-hero-micropasts.jpg')]
     .row
-      .small-12.medium-12.medium-centered.columns
+      .small-12.columns
         h2.text-center = t('.hero.title').html_safe
-        #home-subtitle.row
-          .small-12.medium-10.medium-offset-1.columns.text-center
-            = t('.hero.subtitle_html')
+    .row
+      .small-12.columns
+        strong.subtitle = t('.hero.subtitle_html')
 
   section.projects
     .row
