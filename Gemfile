@@ -25,7 +25,7 @@ gem 'schema_plus'
 # Payment engines
 gem 'catarse_paypal_express', github: 'MicroPasts/catarse_paypal_express', branch: :master
 
-# Neigbhor.ly Engines
+# Neighbor.ly Engines
 gem 'neighborly-admin', github: 'neighborly/neighborly-admin', branch: :master
 gem 'neighborly-api', github: 'neighborly/neighborly-api', branch: :master
 gem 'neighborly-dashboard', github: 'neighborly/neighborly-dashboard', branch: :master
@@ -33,6 +33,7 @@ gem 'neighborly-dashboard', github: 'neighborly/neighborly-dashboard', branch: :
 # Turns every field on a editable one - Admin dependencies
 gem 'best_in_place', github: 'bernat/best_in_place'
 
+gem 'social-buttons', github: 'iffyuva/social-buttons', branch: :master
 # Decorators
 gem 'draper'
 
@@ -139,4 +140,3 @@ gem 'nprogress-rails'
 gem 'pjax_rails'
 gem 'initjs', '~> 2.1.2'
 gem 'remotipart', '~> 1.2.1'
-gem 'social-buttons', '~> 0.3.7'

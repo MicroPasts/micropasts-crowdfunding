@@ -151,7 +151,7 @@ GEM
       activemodel (>= 3.2.0)
       activesupport (>= 3.2.0)
       json (>= 1.7)
-    catarse_monkeymail (0.1.6)
+    catarse_monkeymail (0.1.4)
       mailchimp-api (~> 2.0.4)
       rails (>= 4.0.3)
       rails-observers
@@ -448,7 +448,6 @@ GEM
       railties (>= 3.0, < 4.2)
       slim (~> 2.0)
     slop (3.5.0)
-    social-buttons (0.3.7)
     spring (1.1.2)
     sprockets (2.11.0)
       hike (~> 1.2)
@@ -519,7 +518,8 @@ DEPENDENCIES
   capybara (~> 2.2.1)
   capybara-webkit
   carrierwave (~> 0.9.0)
-  catarse_monkeymail (~> 0.1.6)
+  catarse_monkeymail (~> 0.1.4)
+  social-buttons (~> 0.3)
   catarse_paypal_express!
   coffee-rails (~> 4.0.1)
   coveralls
@@ -589,3 +589,4 @@ DEPENDENCIES
   video_info (~> 2.0.2)
   weekdays
   zurb-foundation (~> 4.3.2)
+  social-buttons
