@@ -155,7 +155,6 @@ GEM
       mailchimp-api (~> 2.0.4)
       rails (>= 4.0.3)
       rails-observers
-    social-buttons (~> 0.3)
     celluloid (0.15.2)
       timers (~> 1.1.0)
     coderay (1.1.0)
@@ -520,7 +519,6 @@ DEPENDENCIES
   capybara-webkit
   carrierwave (~> 0.9.0)
   catarse_monkeymail (~> 0.1.4)
-  social-buttons (~> 0.3)
   catarse_paypal_express!
   coffee-rails (~> 4.0.1)
   coveralls
