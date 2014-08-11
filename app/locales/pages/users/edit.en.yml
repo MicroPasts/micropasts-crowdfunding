@@ -3,8 +3,8 @@ en:
     edit:
       tabs:
         edit: "Profile"
-        my_campaigns: "My Campaigns"
-        ive_contributed: "Campaigns I've Contributed To"
+        my_campaigns: "My campaigns"
+        ive_contributed: "Campaigns I've contributed to"
         credits: 'Credits'
-        payments: 'Payment Info'
+        payments: 'Payment infomation'
         settings: 'Settings'
