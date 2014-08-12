@@ -50,7 +50,6 @@ head
     = javascript_include_tag "http://html5shiv.googlecode.com/svn/trunk/html5.js"
   = javascript_include_tag 'vendor/custom.modernizr', 'data-turbolinks-track' => true
   = javascript_include_tag :application, 'data-turbolinks-track' => true
-  = render 'layouts/analytics'
 body
   = initjs_tag app_name: 'Neighborly'
   /= render 'layouts/loader'
@@ -61,5 +60,6 @@ body
   = render 'layouts/social'
   = render 'layouts/footer'
   = yield :modals
-  /= render_facebook_sdk
+  = render_facebook_sdk
+  = render 'layouts/analytics'
 |</html>
