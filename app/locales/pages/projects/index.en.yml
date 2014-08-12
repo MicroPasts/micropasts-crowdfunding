@@ -15,7 +15,7 @@ en:
         sign_in: 'Sign in'
       hero:
         title: 'MicroPasts: Crowd-Funding'
-        subtitle_html: "Community-based archaeological and historical research"
+        subtitle_html: "Support for community-based archaeological and historical research"
         email_placeholder: 'Sign up for our newsletter'
         submit: 'Submit'
       start-one:
