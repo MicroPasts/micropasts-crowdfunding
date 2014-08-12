@@ -1,5 +1,5 @@
 en:
-  facebook_locale: 'en_US'
+  facebook_locale: 'en_GB'
   site:
     title: "Crowdfunding for archaeology and heritage projects"
     meta_title:  "%{title} · %{company_name}"
