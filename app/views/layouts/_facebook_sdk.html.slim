@@ -1,6 +1,7 @@
 #fb-root
 javascript:
   window.fbAsyncInit = function() {
+    FB._initialized = false;
     FB.init({
       appId      : '#{Configuration['facebook_app_id']}', // App ID
       status     : true, // check login status
