@@ -33,7 +33,6 @@ gem 'neighborly-dashboard', github: 'neighborly/neighborly-dashboard', branch: :
 # Turns every field on a editable one - Admin dependencies
 gem 'best_in_place', github: 'bernat/best_in_place'
 
-gem 'social-buttons', github: 'iffyuva/social-buttons', branch: :master
 # Decorators
 gem 'draper'
 
@@ -140,3 +139,4 @@ gem 'nprogress-rails'
 gem 'pjax_rails'
 gem 'initjs', '~> 2.1.2'
 gem 'remotipart', '~> 1.2.1'
+gem "social-buttons", '~> 0.3' 
