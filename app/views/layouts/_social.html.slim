@@ -1,5 +1,6 @@
-.row.socialShare.center-text
-  = tweet_button( via: "micropasts", count: "none")
-  = like_button(::Configuration[:facebook_app_id], width: "200px", colorscheme: "dark") 
-  = pinit_button
-  = google_plus_button( style: "inline")
+.section.socialShare
+  .row.center-text
+    = tweet_button( via: "micropasts", count: "none")
+    = like_button(::Configuration[:facebook_app_id], width: '200px', colorscheme: 'dark') 
+    = pinit_button
+    = google_plus_button( style: 'inline', script: true)
