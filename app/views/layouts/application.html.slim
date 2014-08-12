@@ -53,7 +53,6 @@ head
   = render 'layouts/analytics'
 body
   = initjs_tag app_name: 'Neighborly'
-  /= render_facebook_sdk
   /= render 'layouts/loader'
   = render 'layouts/header'
   = flash_messages
@@ -62,4 +61,5 @@ body
   = render 'layouts/social'
   = render 'layouts/footer'
   = yield :modals
+  = render_facebook_sdk
 |</html>
