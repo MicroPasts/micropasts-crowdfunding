@@ -1,10 +1,10 @@
 .section.socialShare
   .row
     .row.medium-3.columns
-      = tweet_button( via: "micropasts", count: "none")
+      = tweet_button( via: 'micropasts', count: 'none')
     .row.medium-3.columns
-      = like_button(::Configuration[:facebook_app_id], width: '450', colorscheme: 'dark', layout: 'standard', show-faces: true) 
+      = like_button(::Configuration[:facebook_app_id], width: '450', colorscheme: 'dark', layout: 'standard', show-faces: 'true') 
     .row.medium-3.columns
       = pinit_button
     .row.medium-3.columns
-      = google_plus_button( style: 'inline', script: true)
+      = google_plus_button( style: 'inline', script: 'true')
