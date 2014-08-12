@@ -12,19 +12,19 @@
   section.projects
     .row
       section.recommended
-        .small-12.columns
+        .small-12.columns.text-center
           h3
             = link_to discover_path(filter: 'recommended') do
               i.icon-et-heart
               = t('.recommended')
 
-        /= render 'project', project: @featured.first, large: !browser.mobile? if @featured.any?
-        /= render 'project', project: @recommended.shift if @recommended.any?
+        = render 'project', project: @featured.first, large: !browser.mobile? if @featured.any?
+        = render 'project', project: @recommended.shift if @recommended.any?
 
-        - if @recommended.any?
-          .row
-            - for project in @recommended
-              = render 'project', project: project
+        /- if @recommended.any?
+          /.row
+            /- for project in @recommended
+              /= render 'project', project: project
 
         .text-right.text-right.small-12.columns
           = link_to discover_path(filter: 'recommended'), class: 'see-more' do
@@ -98,7 +98,7 @@
         - @press_assets.each do |asset|
           = link_to asset.url, target: :blank, title: asset.title do
             = image_tag asset.image.thumb.url
-  
+
   section.start-one.hide-for-small
     .row
       .small-12.columns
