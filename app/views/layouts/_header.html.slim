@@ -18,7 +18,7 @@ header.contain-to-grid.fixed
       .top-bar-section
         ul.left.main-menu
           li
-            a.has-tip data-tooltip='' href='http://micropasts.org' target='_blank' title='The MicroPasts project homepage - opens in new window' MicroPasts home
+            a.has-tip data-options='disable-for-touch:true' data-tooltip='' href='http://micropasts.org' target='_blank' title='The MicroPasts project homepage - opens in new window' MicroPasts home
           li
             = link_to main_app.learn_path do
               = t('.about')
@@ -29,7 +29,7 @@ header.contain-to-grid.fixed
             = link_to main_app.start_path do
               = t('.start_campaign')
           li
-            a.has-tip data-tooltip='' href='http://community.micropasts.org' target='_blank' title='Our community forum - opens in a new window' Forum
+            a.has-tip data-options='disable-for-touch:true' data-tooltip='' href='http://community.micropasts.org' target='_blank' title='Our community forum - opens in a new window' Forum
 
         ul.right
           - if user_signed_in?
