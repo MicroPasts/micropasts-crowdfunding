@@ -17,3 +17,5 @@
 //= require nprogress-ajax
 //= require neighborly-admin
 //= require ./lib/survey-reveal.js
+//= require ./lib/jquery.cookiesdirective.js
+//= require ./lib/cookiesconfig.js
