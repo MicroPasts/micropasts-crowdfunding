@@ -18,4 +18,4 @@
 //= require neighborly-admin
 //= require ./lib/survey-reveal.js
 //= require ./lib/jquery.cookiesdirective.js
-//= require ./lib/cookiesconfig.js
+//= require ./lib/cookieconfig.js
