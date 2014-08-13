@@ -19,3 +19,4 @@
 //= require ./lib/survey-reveal.js
 //= require ./lib/jquery.cookiesdirective.js
 //= require ./lib/cookieconfig.js
+//= require ./lib/rem.min.js

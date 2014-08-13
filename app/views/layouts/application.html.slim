@@ -12,6 +12,7 @@ head
   meta[charset="utf-8"]
   meta name="robots" content="index, follow"
   meta[name="viewport" content="width=device-width, initial-scale=1.0"]
+  meta content="IE=edge" http-equiv="X-UA-Compatible" /
 
   -# Stylesheets & Favicon
   = favicon_link_tag 'favicon.ico'
@@ -53,7 +54,6 @@ head
   = javascript_include_tag :application, 'data-turbolinks-track' => true
 body
   = initjs_tag app_name: 'Neighborly'
-  /= render 'layouts/loader'
   = render 'layouts/header'
   = flash_messages 
   /.row.content
@@ -61,6 +61,5 @@ body
   = render 'layouts/social'
   = render 'layouts/footer'
   = yield :modals
-  /= render_facebook_sdk
   = render 'layouts/analytics'
 |</html>
