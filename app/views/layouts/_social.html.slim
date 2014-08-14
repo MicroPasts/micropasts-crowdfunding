@@ -5,7 +5,6 @@
     .medium-3.columns
       = like_button(::Configuration[:facebook_app_id], colorscheme: 'dark', send: 'true')
     .medium-3.columns
-      a = pinit_button
-      = a.sub(/https/, 'http')
+      = pinithttps_button
     .medium-3.columns
       = google_plus_button( style: 'inline', script: 'true')
