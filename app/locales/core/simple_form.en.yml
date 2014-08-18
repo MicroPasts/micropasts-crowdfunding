@@ -67,7 +67,6 @@ en:
         hero_image: 'Project header image'
         site: 'Website'
         hash_tag: 'Hashtag'
-        foundation_widget: 'Use new foundation widget?'
         address_neighborhood: 'Neighbourhood Name'
         location: 'City, State'
         address_city: 'City'
@@ -97,7 +96,6 @@ en:
           video_url: "Paste the link from a Youtube or Vimeo video about your project. Your video should be short enough to retain viewers, but descriptive enough that viewers can understand the project clearly."
           hash_tag: 'A short hashtag that can be added to tweets and Facebook updates.'
           site: "Paste the full link to your project's website, if it has one."
-          foundation_widget: 'If you want to use new widget on embed, check this!'
           campaign_type: 'All or None: Fund only if the goal is met by the deadline. <br> Every pound counts: Keep the funds whether or not goal is met.'
           budget: 'Contributors feel most comfortable when you have a clear plan for how the proceeds will be spent. Briefly explain how the money will be used.'
           permalink: 'Automatically generated. You can edit this later.'
