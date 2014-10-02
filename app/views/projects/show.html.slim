@@ -95,7 +95,6 @@
 
           = link_to t('.contribute'), new_project_contribution_url(@project), class: "button with-icon contribute hide-for-small"
           - if current_user && (current_user.organization? || current_user.channel? || current_user.admin?)
-            \= link_to t('.create_match'), new_project_match_url(@project), class: "button with-icon create-match hide-for-small"
         - else
           .alert-box.secondary.status-description
             = display_status(@project)
