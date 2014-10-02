@@ -54,14 +54,14 @@ en:
       embed: 'Embed'
     status_bar:
       goal: 'Goal: %{value}'
-      total_contributions: '%{value} neighbors'
+      total_contributions: '%{value} contributors'
       contribute: 'Contribute'
     tabs:
       about: 'About'
       updates: 'Updates'
       faqs: 'FAQs'
       comments: 'Comments'
-      contributions: 'Neighbors'
+      contributions: 'Contributors'
       budget: 'Budget'
       terms: 'Terms'
       reports: 'Reports'
