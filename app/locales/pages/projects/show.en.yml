@@ -4,6 +4,7 @@ en:
       so_far: '&nbsp; so far of &nbsp; '
       reached_goal_small_separator_html: '&nbsp; / &nbsp; '
       anonymous_contribution: "Anonymous contributor"
+      neighbors_behind_this: "Contributors behind this"
       subtitle:
         all_or_none: "A project in %{category_name}, in %{city}, by %{author}"
         flexible: "A <span data-tooltip class='has-tip' title='Every pound Counts! <br /><br />In this type of campaign, the project is funded whether or not the goal is reached.'>flexible</span> %{category_name} project by %{author} in %{city}"
