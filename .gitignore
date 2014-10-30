@@ -30,7 +30,7 @@ spec/tmp/
 *.dot
 .ruby-version
 ./log
-
+.idea*
 # Secrets
 .env
 /nbproject/private/
