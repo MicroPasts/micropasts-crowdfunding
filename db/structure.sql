@@ -216,7 +216,7 @@ CREATE TABLE projects (
 CREATE FUNCTION expires_at(projects) RETURNS timestamp with time zone
     LANGUAGE sql
     AS $_$
-         SELECT ((($1.online_date AT TIME ZONE 'America/Chicago' + ($1.online_days || ' days')::interval)::date::text || ' 23:59:59')::timestamp AT TIME ZONE 'America/Chicago')
+         SELECT ((($1.online_date AT TIME ZONE 'US/Central' + ($1.online_days || ' days')::interval)::date::text || ' 23:59:59')::timestamp AT TIME ZONE 'US/Central')
         $_$;
 
 
@@ -412,7 +412,8 @@ CREATE TABLE channels (
     submit_your_project_text_html text,
     start_content hstore,
     start_hero_image character varying(255),
-    success_content hstore
+    success_content hstore,
+    application_url character varying(255)
 );
 
 
@@ -672,6 +673,131 @@ CREATE SEQUENCE matchings_id_seq
 --
 
 ALTER SEQUENCE matchings_id_seq OWNED BY matchings.id;
+
+
+--
+-- Name: neighborly_admin_funding_raised_per_project_reports; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE neighborly_admin_funding_raised_per_project_reports (
+    project_id integer,
+    project_name text,
+    total_raised numeric,
+    total_backs bigint,
+    total_backers bigint
+);
+
+
+--
+-- Name: users; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE users (
+    id integer NOT NULL,
+    email text,
+    name text,
+    nickname text,
+    bio text,
+    image_url text,
+    newsletter boolean DEFAULT false,
+    project_updates boolean DEFAULT false,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
+    admin boolean DEFAULT false,
+    full_name text,
+    address_street text,
+    address_number text,
+    address_complement text,
+    address_neighborhood text,
+    address_city text,
+    address_state text,
+    address_zip_code text,
+    phone_number text,
+    locale text DEFAULT 'pt'::text NOT NULL,
+    encrypted_password character varying(128) DEFAULT ''::character varying NOT NULL,
+    reset_password_token character varying(255),
+    reset_password_sent_at timestamp without time zone,
+    remember_created_at timestamp without time zone,
+    sign_in_count integer DEFAULT 0,
+    current_sign_in_at timestamp without time zone,
+    last_sign_in_at timestamp without time zone,
+    current_sign_in_ip character varying(255),
+    last_sign_in_ip character varying(255),
+    twitter_url character varying(255),
+    facebook_url character varying(255),
+    other_url character varying(255),
+    uploaded_image text,
+    state_inscription character varying(255),
+    profile_type character varying(255),
+    linkedin_url character varying(255),
+    confirmation_token character varying(255),
+    confirmed_at timestamp without time zone,
+    confirmation_sent_at timestamp without time zone,
+    unconfirmed_email character varying(255),
+    new_project boolean DEFAULT false,
+    latitude double precision,
+    longitude double precision,
+    completeness_progress integer DEFAULT 0,
+    CONSTRAINT users_bio_length_within CHECK (((length(bio) >= 0) AND (length(bio) <= 140)))
+);
+
+
+--
+-- Name: neighborly_admin_statistics; Type: VIEW; Schema: public; Owner: -
+--
+
+CREATE VIEW neighborly_admin_statistics AS
+ SELECT ( SELECT count(*) AS count
+           FROM users) AS total_users,
+    ( SELECT count(*) AS count
+           FROM users
+          WHERE ((users.profile_type)::text = 'organization'::text)) AS total_organization_users,
+    ( SELECT count(*) AS count
+           FROM users
+          WHERE ((users.profile_type)::text = 'personal'::text)) AS total_personal_users,
+    ( SELECT count(*) AS count
+           FROM users
+          WHERE ((users.profile_type)::text = 'channel'::text)) AS total_channel_users,
+    ( SELECT count(*) AS count
+           FROM ( SELECT DISTINCT projects.address_city,
+                    projects.address_state
+                   FROM projects) count) AS total_communities,
+    contributions_totals.total_contributions,
+    contributions_totals.total_contributors,
+    contributions_totals.total_contributed,
+    projects_totals.total_projects,
+    projects_totals.total_projects_success,
+    projects_totals.total_projects_online,
+    projects_totals.total_projects_draft,
+    projects_totals.total_projects_soon
+   FROM ( SELECT count(*) AS total_contributions,
+            count(DISTINCT contributions.user_id) AS total_contributors,
+            sum(contributions.value) AS total_contributed
+           FROM contributions
+          WHERE ((contributions.state)::text <> ALL (ARRAY[('waiting_confirmation'::character varying)::text, ('pending'::character varying)::text, ('canceled'::character varying)::text, 'deleted'::text]))) contributions_totals,
+    ( SELECT count(*) AS total_projects,
+            count(
+                CASE
+                    WHEN ((projects.state)::text = 'draft'::text) THEN 1
+                    ELSE NULL::integer
+                END) AS total_projects_draft,
+            count(
+                CASE
+                    WHEN ((projects.state)::text = 'soon'::text) THEN 1
+                    ELSE NULL::integer
+                END) AS total_projects_soon,
+            count(
+                CASE
+                    WHEN ((projects.state)::text = 'successful'::text) THEN 1
+                    ELSE NULL::integer
+                END) AS total_projects_success,
+            count(
+                CASE
+                    WHEN ((projects.state)::text = 'online'::text) THEN 1
+                    ELSE NULL::integer
+                END) AS total_projects_online
+           FROM projects
+          WHERE ((projects.state)::text <> ALL (ARRAY[('deleted'::character varying)::text, ('rejected'::character varying)::text]))) projects_totals;
 
 
 --
@@ -1663,118 +1789,6 @@ ALTER SEQUENCE states_id_seq OWNED BY states.id;
 
 
 --
--- Name: users; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE TABLE users (
-    id integer NOT NULL,
-    email text,
-    name text,
-    nickname text,
-    bio text,
-    image_url text,
-    newsletter boolean DEFAULT false,
-    project_updates boolean DEFAULT false,
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone,
-    admin boolean DEFAULT false,
-    full_name text,
-    address_street text,
-    address_number text,
-    address_complement text,
-    address_neighborhood text,
-    address_city text,
-    address_state text,
-    address_zip_code text,
-    phone_number text,
-    locale text DEFAULT 'pt'::text NOT NULL,
-    encrypted_password character varying(128) DEFAULT ''::character varying NOT NULL,
-    reset_password_token character varying(255),
-    reset_password_sent_at timestamp without time zone,
-    remember_created_at timestamp without time zone,
-    sign_in_count integer DEFAULT 0,
-    current_sign_in_at timestamp without time zone,
-    last_sign_in_at timestamp without time zone,
-    current_sign_in_ip character varying(255),
-    last_sign_in_ip character varying(255),
-    twitter_url character varying(255),
-    facebook_url character varying(255),
-    other_url character varying(255),
-    uploaded_image text,
-    state_inscription character varying(255),
-    profile_type character varying(255),
-    linkedin_url character varying(255),
-    confirmation_token character varying(255),
-    confirmed_at timestamp without time zone,
-    confirmation_sent_at timestamp without time zone,
-    unconfirmed_email character varying(255),
-    new_project boolean DEFAULT false,
-    latitude double precision,
-    longitude double precision,
-    completeness_progress integer DEFAULT 0,
-    CONSTRAINT users_bio_length_within CHECK (((length(bio) >= 0) AND (length(bio) <= 140)))
-);
-
-
---
--- Name: statistics; Type: VIEW; Schema: public; Owner: -
---
-
-CREATE VIEW statistics AS
- SELECT ( SELECT count(*) AS count
-           FROM users) AS total_users,
-    ( SELECT count(*) AS count
-           FROM users
-          WHERE ((users.profile_type)::text = 'organization'::text)) AS total_organization_users,
-    ( SELECT count(*) AS count
-           FROM users
-          WHERE ((users.profile_type)::text = 'personal'::text)) AS total_personal_users,
-    ( SELECT count(*) AS count
-           FROM users
-          WHERE ((users.profile_type)::text = 'channel'::text)) AS total_channel_users,
-    ( SELECT count(*) AS count
-           FROM ( SELECT DISTINCT projects.address_city,
-                    projects.address_state
-                   FROM projects) count) AS total_communities,
-    contributions_totals.total_contributions,
-    contributions_totals.total_contributors,
-    contributions_totals.total_contributed,
-    projects_totals.total_projects,
-    projects_totals.total_projects_success,
-    projects_totals.total_projects_online,
-    projects_totals.total_projects_draft,
-    projects_totals.total_projects_soon
-   FROM ( SELECT count(*) AS total_contributions,
-            count(DISTINCT contributions.user_id) AS total_contributors,
-            sum(contributions.value) AS total_contributed
-           FROM contributions
-          WHERE ((contributions.state)::text <> ALL (ARRAY[('waiting_confirmation'::character varying)::text, ('pending'::character varying)::text, ('canceled'::character varying)::text, 'deleted'::text]))) contributions_totals,
-    ( SELECT count(*) AS total_projects,
-            count(
-                CASE
-                    WHEN ((projects.state)::text = 'draft'::text) THEN 1
-                    ELSE NULL::integer
-                END) AS total_projects_draft,
-            count(
-                CASE
-                    WHEN ((projects.state)::text = 'soon'::text) THEN 1
-                    ELSE NULL::integer
-                END) AS total_projects_soon,
-            count(
-                CASE
-                    WHEN ((projects.state)::text = 'successful'::text) THEN 1
-                    ELSE NULL::integer
-                END) AS total_projects_success,
-            count(
-                CASE
-                    WHEN ((projects.state)::text = 'online'::text) THEN 1
-                    ELSE NULL::integer
-                END) AS total_projects_online
-           FROM projects
-          WHERE ((projects.state)::text <> ALL (ARRAY[('deleted'::character varying)::text, ('rejected'::character varying)::text]))) projects_totals;
-
-
---
 -- Name: subscriber_reports; Type: VIEW; Schema: public; Owner: -
 --
 
@@ -2506,13 +2520,6 @@ ALTER TABLE ONLY versions
 
 
 --
--- Name: fk__api_access_tokens_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE INDEX fk__api_access_tokens_user_id ON api_access_tokens USING btree (user_id);
-
-
---
 -- Name: fk__authorizations_oauth_provider_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -2524,27 +2531,6 @@ CREATE INDEX fk__authorizations_oauth_provider_id ON authorizations USING btree 
 --
 
 CREATE INDEX fk__authorizations_user_id ON authorizations USING btree (user_id);
-
-
---
--- Name: fk__balanced_contributors_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE INDEX fk__balanced_contributors_user_id ON balanced_contributors USING btree (user_id);
-
-
---
--- Name: fk__channel_members_channel_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE INDEX fk__channel_members_channel_id ON channel_members USING btree (channel_id);
-
-
---
--- Name: fk__channel_members_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE INDEX fk__channel_members_user_id ON channel_members USING btree (user_id);
 
 
 --
@@ -2569,41 +2555,6 @@ CREATE INDEX fk__channels_user_id ON channels USING btree (user_id);
 
 
 --
--- Name: fk__images_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE INDEX fk__images_user_id ON images USING btree (user_id);
-
-
---
--- Name: fk__matches_project_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE INDEX fk__matches_project_id ON matches USING btree (project_id);
-
-
---
--- Name: fk__matches_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE INDEX fk__matches_user_id ON matches USING btree (user_id);
-
-
---
--- Name: fk__matchings_contribution_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE INDEX fk__matchings_contribution_id ON matchings USING btree (contribution_id);
-
-
---
--- Name: fk__matchings_match_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE INDEX fk__matchings_match_id ON matchings USING btree (match_id);
-
-
---
 -- Name: fk__notifications_channel_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -2615,69 +2566,6 @@ CREATE INDEX fk__notifications_channel_id ON notifications USING btree (channel_
 --
 
 CREATE INDEX fk__notifications_company_contact_id ON notifications USING btree (contact_id);
-
-
---
--- Name: fk__notifications_match_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE INDEX fk__notifications_match_id ON notifications USING btree (match_id);
-
-
---
--- Name: fk__organizations_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE INDEX fk__organizations_user_id ON organizations USING btree (user_id);
-
-
---
--- Name: fk__payment_notifications_match_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE INDEX fk__payment_notifications_match_id ON payment_notifications USING btree (match_id);
-
-
---
--- Name: fk__payouts_project_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE INDEX fk__payouts_project_id ON payouts USING btree (project_id);
-
-
---
--- Name: fk__payouts_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE INDEX fk__payouts_user_id ON payouts USING btree (user_id);
-
-
---
--- Name: fk__project_documents_project_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE INDEX fk__project_documents_project_id ON project_documents USING btree (project_id);
-
-
---
--- Name: fk__project_faqs_project_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE INDEX fk__project_faqs_project_id ON project_faqs USING btree (project_id);
-
-
---
--- Name: fk__taggings_project_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE INDEX fk__taggings_project_id ON taggings USING btree (project_id);
-
-
---
--- Name: fk__taggings_tag_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE INDEX fk__taggings_tag_id ON taggings USING btree (tag_id);
 
 
 --
@@ -3029,6 +2917,22 @@ CREATE UNIQUE INDEX unique_schema_migrations ON schema_migrations USING btree (v
 
 CREATE RULE "_RETURN" AS
     ON SELECT TO funding_raised_per_project_reports DO INSTEAD  SELECT project.id AS project_id,
+    project.name AS project_name,
+    sum(contributions.value) AS total_raised,
+    count(*) AS total_backs,
+    count(DISTINCT contributions.user_id) AS total_backers
+   FROM (contributions
+     JOIN projects project ON ((project.id = contributions.project_id)))
+  WHERE ((contributions.state)::text <> ALL (ARRAY[('waiting_confirmation'::character varying)::text, ('pending'::character varying)::text, ('canceled'::character varying)::text, 'deleted'::text]))
+  GROUP BY project.id;
+
+
+--
+-- Name: _RETURN; Type: RULE; Schema: public; Owner: -
+--
+
+CREATE RULE "_RETURN" AS
+    ON SELECT TO neighborly_admin_funding_raised_per_project_reports DO INSTEAD  SELECT project.id AS project_id,
     project.name AS project_name,
     sum(contributions.value) AS total_raised,
     count(*) AS total_backs,
@@ -3876,4 +3780,14 @@ INSERT INTO schema_migrations (version) VALUES ('20140806141600');
 INSERT INTO schema_migrations (version) VALUES ('20140807215229');
 
 INSERT INTO schema_migrations (version) VALUES ('20140812150035');
+
+INSERT INTO schema_migrations (version) VALUES ('20140829195912');
+
+INSERT INTO schema_migrations (version) VALUES ('20141005185320');
+
+INSERT INTO schema_migrations (version) VALUES ('20141005191635');
+
+INSERT INTO schema_migrations (version) VALUES ('20141014002211');
+
+INSERT INTO schema_migrations (version) VALUES ('20141014002212');
 
