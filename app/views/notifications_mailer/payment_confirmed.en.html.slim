@@ -32,7 +32,7 @@ br
 - if resource.is_a?(Contribution)
   - if resource.project.flexible?
     br
-    | This project will be funded on <strong>#{l resource.project.expires_at.to_date, format: :long}</strong>. Shortly after, #{resource.project.user.display_name} will contact you about rewards and followup. This process may take a few days so hang tight!
+    | This project will be funded on <strong>#{l resource.project.expires_at.to_date, format: :long}</strong>. Thank you for your donation!
   - else
     br
     |If the project is successfully funded by <strong>#{l resource.project.expires_at.to_date, format: :long}</strong>, #{resource.project.user.display_name} will contact you about rewards and followup. This process may take a few days so hang tight!
