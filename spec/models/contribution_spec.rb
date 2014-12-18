@@ -23,7 +23,7 @@ describe Contribution do
     it{ should validate_presence_of(:project) }
     it{ should validate_presence_of(:user) }
     it{ should validate_presence_of(:value) }
-    it{ should_not allow_value(4.99).for(:value) }
+    it{ should_not allow_value(0.99).for(:value) }
     it{ should allow_value(10).for(:value) }
     it{ should allow_value(20).for(:value) }
   end
