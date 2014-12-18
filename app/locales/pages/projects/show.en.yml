@@ -10,7 +10,7 @@ en:
       neighbors_behind_this: "Contributors behind this"
       subtitle:
         all_or_none: "A project in %{category_name}, in %{city}, by %{author}. <br />In this campaign, the project is only funded if the funding target is reached.."
-        flexible: "A project in %{category_name}, in %{city}, by %{author}. <br />In this campaign, the project is funded whether or not the funding target is reached."
+        flexible: "A project in %{category_name}, in %{city}, by %{author}. <br />All donations to this campaign will make a difference and will be used by the project to further its work whether the total funding target is reached or not."
       status-bar:
         goal: 'Goal: %{value}'
         total_contributions: '%{value} contibutors'
