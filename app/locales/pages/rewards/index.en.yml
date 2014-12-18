@@ -7,6 +7,6 @@ en:
       contributions_to_confirm:
         one:  "1 contribution in time to confirm."
         other: "%{count} contributions in time to confirm."
-      reward_title: "For %{minimum} or more"
+      reward_title: "Donate %{minimum} or more"
       contact: 'Contact'
       reward_deliver_time: "Estimated delivery: %{prevision}"
