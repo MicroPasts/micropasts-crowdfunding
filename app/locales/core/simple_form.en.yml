@@ -14,13 +14,13 @@ en:
         password: 'Password'
         current_password: 'Current Password'
         bio: '140 characters or less...'
-        facebook_url: 'http://facebook.com/'
+        facebook_url: 'https://facebook.com/'
         other_url: 'http://www.'
-        linkedin_url: 'http://linkedin.com/in/'
-        twitter_url: 'http://twitter.com/'
+        linkedin_url: 'https://linkedin.com/in/'
+        twitter_url: 'https://twitter.com/'
       channel:
-        facebook: 'http://facebook.com/'
-        twitter: 'http://twitter.com/'
+        facebook: 'https://facebook.com/'
+        twitter: 'https://twitter.com/'
         website: 'http://www.'
     labels:
       contact:
