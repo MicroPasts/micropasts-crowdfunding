@@ -2,7 +2,8 @@
 
 ## An open source fundraising toolkit for heritage projects
 
-This is the source code repository that runs the [MicroPasts](https://crowdfunded.micropasts.org) Crowdfunding platform, which builds on a fork of [Neighbor.ly](http://neighbor.ly).
+This is the archived source code repository that runs the [MicroPasts](https://crowdfunded.micropasts.org) Crowdfunding platform, which builds on a fork of [Neighbor.ly](http://neighbor.ly). 
+*This project is no longer active*
 
 # Getting started
 
